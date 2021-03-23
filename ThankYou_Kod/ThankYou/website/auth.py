@@ -4,12 +4,14 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    '''Användarlogin'''
     data = request.form
     print(data)
     return render_template("login.html")            
 
 @auth.route('/logout')
 def logout():
+    '''Användarlogout'''
     return "<p>Logout</p>"
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
