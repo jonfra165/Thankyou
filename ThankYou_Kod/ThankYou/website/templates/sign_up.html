@@ -1,0 +1,21 @@
+{% extends "base.html" %} <!-- AS A STRING -->
+
+{% block title %} Sign up {% endblock %}
+
+{% block content %}
+<h1>This is the sign up page</h1>  
+<h3>Sign Up!</h3>
+
+<form method="POST">
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email" placeholder="Enter your email..."><br>
+    <label for="fname">First name:</label><br>
+    <input type="text" name="fname" id="fname" placeholder="Enter your first name..."><br>
+    <label for="password1">Password:</label><br>
+    <input type="password" name="password1" id="password1" placeholder="Enter your password..."><br>
+    <label for="password2">Confirm password:</label><br>
+    <input type="password" name="password2" id="password2" placeholder="Confirm your password..."><br>
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
