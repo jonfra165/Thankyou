@@ -35,6 +35,6 @@ def sign_up():
             flash('Password must be greater than 8 characters.', category='error')
         else:
             flash('Account created', category='sucess')
-            return redirect(url_for('views.login')) #REDIRECT TO LOGIN PAGE
+            return redirect(url_for('auth.login')) #REDIRECT TO LOGIN PAGE
             
     return render_template("sign_up.html")
