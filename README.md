@@ -1,12 +1,10 @@
 #WELCOME TO THANKYOU'S READ ME FILE#
 
 #REQUIREMENTS#
-To run these files you need to have Flask, Flask Login and SQLalchemy installed.
+To run these files you need to have Flask installed.
 
 Install these modules by opening your 'Windows Powershell' on Windows or 'Terminal' on Mac and type:
 pip install flask
-pip install flask-login
-pip install flask-sqlalchemy
 
 #LINK TO PROJECT CODE FILE FOR DOWNLOAD#
 
