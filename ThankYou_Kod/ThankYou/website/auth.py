@@ -8,7 +8,9 @@ def login():
     '''This is the user login'''
     data = request.form
     print(data)
-    return render_template("login.html")            
+    return render_template('login.html')  
+
+    #return render_template('home.html') [to be implemented later]       
 
 @auth.route('/logout')
 def logout():
@@ -35,6 +37,6 @@ def sign_up():
             flash('Password must be greater than 8 characters.', category='error')
         else:
             flash('Account created', category='sucess')
-            return redirect(url_for('views.login')) #REDIRECT TO LOGIN PAGE
+            return redirect(url_for('auth.login')) #REDIRECT TO LOGIN PAGE
             
     return render_template("sign_up.html")
