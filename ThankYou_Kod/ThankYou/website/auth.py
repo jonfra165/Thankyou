@@ -8,7 +8,9 @@ def login():
     '''This is the user login'''
     data = request.form
     print(data)
-    return render_template("login.html")            
+    return render_template('login.html')  
+
+    #return render_template('home.html') [to be implemented at later]       
 
 @auth.route('/logout')
 def logout():
