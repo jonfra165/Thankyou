@@ -4,19 +4,20 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    '''Användarlogin'''
+    '''This is the user login'''
     data = request.form
     print(data)
     return render_template("login.html")            
 
 @auth.route('/logout')
 def logout():
-    '''Användarlogout'''
+    '''This is the user logout'''
     return "<p>Logout</p>"
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
-    '''Ett formulär som hämtar användarens angivna email osv '''
+    '''This is a sign-up form which asks the user for their email, first name and password'''
+
     if request.method == 'POST':
         email = request.form.get('email') 
         fname = request.form.get('fname')
@@ -33,6 +34,6 @@ def sign_up():
             flash('Password must be greater than 8 characters.', category='error')
         else:
             flash('Account created', category='sucess')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.login')) #REDIRECT TO LOGIN PAGE
             
     return render_template("sign_up.html")

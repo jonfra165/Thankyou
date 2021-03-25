@@ -1,15 +1,17 @@
-{% extends "base.html" %} <!-- AS A STRING -->
+{% extends "base.html" %}  <!-- GET BASE TEMPLATE -->
 
-{% block title %} Login {% endblock %}
+{% block title %} Login {% endblock %} <!-- PAGE TITLE -->
 
 
 {% block content %}
-<h1>This is the login page!</h1>
+<h1>This is the login page!</h1> <!-- PAGE HEADING -->
 
 <h3>Login</h3>
-<form method="POST">
+<form method="POST"> <!-- FORM FOR LOGIN -->
+    <!-- Email -->
     <label for="email">Email:</label><br>
     <input type="email" name="email" id="email" placeholder="Enter your email..."><br>
+    <!-- Password -->
     <label for="password">Password:</label><br>
     <input type="password" name="password" id="password" placeholder="Enter your password..."><br>
 
