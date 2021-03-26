@@ -10,6 +10,6 @@ pip install flask
 
 https://github.com/jonfra165/Thankyou.git
 
-#HOW TO RUN THE WEBSITE
+#HOW TO RUN THE WEBSERVER
 
 Run main.py
