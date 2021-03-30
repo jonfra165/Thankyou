@@ -5,7 +5,6 @@ import pyodbc
 db = SQLAlchemy()
 db_name = "test_database" #Database name
 
-
 try: #Create database
     conn = pyodbc.connect("driver={SQL Server};server=localhost; database=master; trusted_connection=true", autocommit=True) 
     cursor = conn.cursor()
