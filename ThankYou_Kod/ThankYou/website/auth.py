@@ -16,7 +16,7 @@ def login():
         
         user_login = user.query.filter_by(email=email).first() #Checks row in table if email exists
 
-        if user: #If email has a row
+        if user_login: #If email has a row
             if check_password_hash(user_login.password, password): #If email has a row and correct password
                 flash('Logged in succesfully!', category='success')
                 return redirect(url_for('views.home')) #Redirect to home page
@@ -42,10 +42,10 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        user = user.query.filter_by(email=email).first()
-        if user: 
+        sign_up_user = user.query.filter_by(email=email).first()
+        if sign_up_user: 
             flash('Email already exists!', category='error')
-        if len(email) < 4:
+        elif len(email) < 4:
             flash('Email must be greater than 4 characters.', category='error')
         elif len(fname) < 2:
             flash('First name must be greater than 2 characters.', category='error')
