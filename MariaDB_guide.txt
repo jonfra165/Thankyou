@@ -1,6 +1,6 @@
 Good to know:
 MariaDB is not case sensitive.
-MariaDB syntax is identical to MYSQL's syntax.
+MariaDB's syntax is identical to MYSQL's syntax.
 
 1. To open MariaDB 
     1.1 ON WINDOWS:
