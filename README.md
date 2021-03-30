@@ -10,7 +10,7 @@ https://github.com/jonfra165/Thankyou.git
     Download link: https://www.microsoft.com/sv-se/sql-server/sql-server-downloads
     Follow the download set up? and select a password you will remember (This is very important!).
 
-    2.1 When MariaDB is downloaded you noew need to add a path to it. To do this follow the following steps:
+    2.1 When MariaDB is downloaded you need to add a path to it. To do this follow the following steps:
         2.1.1 Copy the path to the bin-folder within the MariaDB-folder.
             Example: C:\Program Files\MariaDB 10.5\bin
         2.1.2 Open up 'Control Panel'
@@ -86,7 +86,7 @@ https://github.com/jonfra165/Thankyou.git
         6.1.6 Add: "python.linting.pylintArgs": ["--load-plugins", "pylint_flask"]
         6.1.7 Save and close
     
-    6.2 If you're using another code editor else and you get an error that says: E1101: Instance of 'SQLAlchemy' has no 'Column' member (no-member). 
+    6.2 If you're using another code editor and you get an error that says: E1101: Instance of 'SQLAlchemy' has no 'Column' member (no-member). 
         6.2.1 Contact us via discord: [ADD SOMETHING TO THIS LATER]
         6.2.2 Visit this link: https://stackoverflow.com/questions/53975234/instance-of-sqlalchemy-has-no-column-member-no-member
 
