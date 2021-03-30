@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %} Home {% endblock %}</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="#" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -42,5 +42,4 @@
 
 </body>
 
-<!--{{ url_for('static', filename='index.js') }} LOADING FILES FROM STATIC FOLDER-->
 </html>
