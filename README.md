@@ -90,7 +90,8 @@ https://github.com/jonfra165/Thankyou.git
         On MAC, run: venv/bin/activate
         On WINDOWS, run: venv\Scripts\activate.bat
 
-    5.3 To download the required frameworks and modules, run: pip install -r requirements.txt
+    5.3 To download the required frameworks and modules.
+        Run: pip install -r requirements.txt
 
 6. Last set up steps before running the webserver.
 
