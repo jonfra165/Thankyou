@@ -7,7 +7,7 @@ https://github.com/jonfra165/Thankyou.git
 #SET UP
 
 2.  (WINDOWS ONLY) You need to have MariaDB installed.
-    Download link: https://www.microsoft.com/sv-se/sql-server/sql-server-downloads
+    Download link: https://mariadb.org/download/
     Follow the download and select a password you will remember (This is very important!).
 
     2.1 When MariaDB is downloaded you need to add a path to it. To do this follow the following steps:
@@ -34,7 +34,7 @@ https://github.com/jonfra165/Thankyou.git
 3. (MAC ONLY) To download MariaDB on MAC, follow the following steps: [TO BE TESTED]
 
     3.1 To download MariaDB you first need to install Xcode and Homebew, in Terminal:
-        3.1.1 Run: xcode-select --install.
+        3.1.1 Run: xcode-select --install
         3.1.1 Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         3.1.2 Run: brew doctor. Follow on-screen instructions to fix warnings if necessary.
         3.1.3 Run: brew update
