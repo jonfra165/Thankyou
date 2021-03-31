@@ -42,7 +42,7 @@ https://github.com/jonfra165/Thankyou.git
     3.2 Download MariaDB, in Terminal:
         3.2.1 Run: brew install mariadb
         3.2.2 Run: mysql_install_db
-        3.2.3 Run: mysql.server start.
+        3.2.3 Run: mysql.server start
         3.2.4 Close Terminal
     
     3.3 You now need to secure your MariaDB installation, in Terminal:
