@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template, url_for, redirect
+from flask import Blueprint, render_template, url_for, redirect, request, flash
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
 
 views = Blueprint('views', __name__)
 
-@views.route('/', method=['GET', 'POST'])
+@views.route('/', methods=['GET', 'POST'])
 @login_required #User can only see the home page if they are logged in
 def home():
     '''This view returns the home page'''
