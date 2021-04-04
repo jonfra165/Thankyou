@@ -5,4 +5,19 @@
 {% block content %}
 <!-- PAGE HEADING-->
 <h1>This is the home page!</h1>   
+
+<h2>Notes</h2>
+
+<ul id='notes'>
+    {% for note in user.notes %}
+    <li>{{ note.data }}</li>
+    {% endfor %}
+</ul>
+
+<form method="POST">
+    <textarea name="note" id="note" cols="30" rows="10"></textarea>
+    <br>
+    <input type="submit" value="Save note">
+</form>
+
 {% endblock %}
