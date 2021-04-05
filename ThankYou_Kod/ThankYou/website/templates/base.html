@@ -12,10 +12,13 @@
 <body>
     <!-- Navigation -->
     <nav>
+        {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+        {% else %} <!--If user is not logged in, show login and sign-up-->
         <a href="/login">Login</a>
         <a href="/sign-up">Sign up</a>
-        <a href="/logout">Logout</a>
-        <a href="/">Home</a>
+        {% endif %}
     </nav>
 
     <!-- Error messages -->

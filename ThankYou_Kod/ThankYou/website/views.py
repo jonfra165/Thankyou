@@ -12,9 +12,9 @@ def home():
     if request.method == 'POST':
         note = request.form.get('note')
 
-        if len(note) < 1:
+        if len(note) < 1: #If less than one character return an error
             flash('Note is too short!', category='error')
-        else:
+        else: #Else, save note
             new_note = Note(data=note, user_id=current_user.id)
             db.session.add(new_note)
             db.session.commit()
