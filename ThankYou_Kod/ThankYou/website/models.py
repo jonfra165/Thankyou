@@ -16,3 +16,6 @@ class User(db.Model, UserMixin): #Table user
     first_name = db.Column(db.String(150))
     user_notes = db.relationship('Note') #Must be in upper-case
 
+class Test(db.Model): 
+    id = db.Column(db.Integer, primary_key=True)
+
