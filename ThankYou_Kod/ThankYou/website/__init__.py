@@ -26,6 +26,8 @@ def create_app():
     #Blueprints
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    
+    create_database(app)
 
     #Login Manager
     login_manager = LoginManager()
@@ -39,3 +41,6 @@ def create_app():
 
     return app
 
+def create_database(app):
+    db.create_all(app=app)
+    print('Created Database!')
