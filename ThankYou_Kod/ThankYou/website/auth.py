@@ -38,7 +38,6 @@ def logout():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     '''This is a sign-up form which asks the user for their email, first name and password'''
-
     if request.method == 'POST':
         email = request.form.get('email') 
         fname = request.form.get('fname')
@@ -56,6 +55,10 @@ def sign_up():
             flash('Passwords don\'t match', category='error')
         elif len(password1) < 8:
             flash('Password must be greater than 8 characters.', category='error')
+        elif not any(char.isupper() for char in password1):
+            flash('Password should have at least one uppercase letter', category='error')
+        elif not any(char.isdigit() for char in password1):
+            flash('Password should have at least one numeral', category='error')
         else: #Insert new user to database
             new_user = User(email=email, first_name=fname, password=generate_password_hash(password1, method='sha256')) #Hash password
             db.session.add(new_user)
