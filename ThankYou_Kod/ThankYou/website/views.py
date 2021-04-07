@@ -19,5 +19,9 @@ def home():
             db.session.add(new_note)
             db.session.commit()
             flash('Note added!', category='success')
+    
+    user = current_user.id 
+    note = Note.query.all() #get all values from table Note
+    
+    return render_template('home.html', user=user, note=note)
 
-    return render_template('home.html', user=current_user)
