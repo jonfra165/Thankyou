@@ -23,7 +23,6 @@ https://github.com/jonfra165/Thankyou.git
         2.1.9 Choose 'OK' to save
 
     2.2. You now need to create a basic setup and the database which will be used.
-        
         2.1 Open up Windows Powershell
         2.2 Run: mysql -u root -p
         2.3 Type in the password you chose from the download of the MariaDB-database
@@ -31,23 +30,21 @@ https://github.com/jonfra165/Thankyou.git
         2.5 Run: CREATE DATABASE testdb;
         2.6 Run: exit;
 
-3. (MAC ONLY) To download MariaDB on MAC, follow the following steps: [TO BE TESTED]
+3. (MAC ONLY) To download MariaDB on MAC, follow the following steps:
 
     3.1 To download MariaDB you first need to install Xcode and Homebew, in Terminal:
         3.1.1 Run: xcode-select --install
         3.1.1 Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        3.1.2 Run: brew doctor. Follow on-screen instructions to fix warnings if necessary.
+        3.1.2 Run: brew doctor (Follow on-screen instructions to fix warnings if necessary)
         3.1.3 Run: brew update
 
     3.2 Download MariaDB, in Terminal:
         3.2.1 Run: brew install mariadb
         3.2.2 Run: mysql_install_db
-        3.2.3 Run: mysql.server start
-        3.2.4 Close Terminal
     
     3.3 You now need to secure your MariaDB installation, in Terminal:
         3.3.1 Run: mariadb-secure-installation
-            3.3.1.1 Follow the download steps in Terminal and type in the correct settings as shown below
+            3.3.1.1 Follow the download steps in Terminal and type in the correct settings as shown below:
                 3.3.1.2 Set a root password even if the on-screen instructions tell you it is safe not to do so
                 3.3.1.3 Enable unix_socket authentication? n
                 3.3.1.4 Change the root password? (You can do as you want here)
@@ -55,14 +52,21 @@ https://github.com/jonfra165/Thankyou.git
                 3.3.1.6 Disallow root login remotely? y
                 3.3.1.7 Remove test database and access to it? (You can do as you want here)
                 3.3.1.8 Reload privilege tables now? y
-                3.3.1.9 Close Terminal
 
     3.4 You now need to create a basic setup and the database which will be used, in Terminal:
         3.4.1 Run: mariadb -u root -p 
-        3.4.2 Type in the password you chose from the download of the MariaDB-database
-        3.4.3 Run: grant all privileges on *.* to root@localhost identified by 'password' with grant option;
-        3.4.4 Run: CREATE DATABASE testdb;
-        3.4.5 Run: exit;
+        3.4.2 Type your chosen password
+        3.4.3 Run: CREATE DATABASE testdb;
+        3.4.4 Run: USE testdb;
+        3.4.5 Run: GRANT ALL PRIVILEGES ON testdb TO  'root'@'localhost'  IDENTIFIED  BY  'password';
+        3.4.6 Run: exit;
+
+    3.5 In case you have NO password and cannot run mariadb-secure-installation, in Terminal:
+        3.5.1 Run: mariadb
+        3.5.2 Run: CREATE DATABASE testdb;
+        3.5.3 USE testdb;
+        3.5.4 Run: GRANT ALL PRIVILEGES ON testdb TO  'root'@'localhost'  IDENTIFIED  BY  'password';
+        3.5.5 Run: exit;
     
 4. (WINDOWS ONLY) Before you download the required frameworks you need to add a path to your Python-folder. To do this follow the following steps: (Skip this step if you already have this path.)
     
