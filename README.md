@@ -84,7 +84,7 @@ https://github.com/jonfra165/Thankyou.git
     4.2 Repeat the steps above but with a path that goes to the Scripts-folder within the Python39-folder.
         4.2.1 Example: C:\Users\username\AppData\Local\Programs\Python\Python39\Scripts
 
-5. You will need to download the required frameworks through python's virtual environment.
+5. You will need to download the required frameworks through python's virtual environment in the project folder.
 
     5.1 Create a virtual environment.
         On MAC run: python3 -m venv venv
@@ -92,7 +92,10 @@ https://github.com/jonfra165/Thankyou.git
         
     5.2 Activate the virtual environment.
         On MAC, run: venv/bin/activate
-        On WINDOWS, run: venv\Scripts\activate.bat
+        On WINDOWS, run: venv\Scripts\activate
+
+        5.2.1 If the activate command generates the message "Activate.ps1"
+            Run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
     5.3 To download the required frameworks and modules.
         Run: pip install -r requirements.txt
