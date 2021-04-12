@@ -43,7 +43,7 @@ https://github.com/jonfra165/Thankyou.git
         3.2.2 Run: mysql_install_db
     
     3.3 You now need to secure your MariaDB installation, in Terminal:
-        3.3.1 Run: mariadb-secure-installation
+        3.3.1 Run: mariadb-secure-installation (In case you cannot set a password in the step 3.3.1.2 go to step 3.5)
             3.3.1.1 Follow the download steps in Terminal and type in the correct settings as shown below:
                 3.3.1.2 Set a root password even if the on-screen instructions tell you it is safe not to do so
                 3.3.1.3 Enable unix_socket authentication? n
@@ -64,13 +64,13 @@ https://github.com/jonfra165/Thankyou.git
     3.5 In case you have NO password and cannot run mariadb-secure-installation, in Terminal:
         3.5.1 Run: mariadb
         3.5.2 Run: CREATE DATABASE testdb;
-        3.5.3 USE testdb;
+        3.5.3 Run: USE testdb;
         3.5.4 Run: GRANT ALL PRIVILEGES ON testdb TO  'root'@'localhost'  IDENTIFIED  BY  'password';
         3.5.5 Run: exit;
     
 4. (WINDOWS ONLY) Before you download the required frameworks you need to add a path to your Python-folder. To do this follow the following steps: (Skip this step if you already have this path.)
     
-    4.1 Copy the path to the Python39-folder within the Python-folder.
+    4.1 Copy the path to the latest version folder of your python within the Python-folder.
             Example: C:\Users\username\AppData\Local\Programs\Python\Python39
         4.1.2 Open up 'Control Panel'
         4.1.3 Choose 'Systems'
@@ -81,21 +81,22 @@ https://github.com/jonfra165/Thankyou.git
         4.1.8 Paste the path
         4.1.9 Choose 'OK' to save
     
-    4.2 Repeat the steps above but with a path that goes to the Scripts-folder within the Python39-folder.
+    4.2 Repeat the steps above but with a path that goes to the Scripts-folder within the latest version of your python folder.
         4.2.1 Example: C:\Users\username\AppData\Local\Programs\Python\Python39\Scripts
 
 5. You will need to download the required frameworks through python's virtual environment in the project folder.
 
     5.1 Create a virtual environment.
-        On MAC run: python3 -m venv venv
-        On WINDOWS run: py -3 -m venv venv
+        On MAC Run: python3 -m venv venv
+        On WINDOWS Run: py -3 -m venv venv
         
     5.2 Activate the virtual environment.
-        On MAC, run: venv/bin/activate
-        On WINDOWS, run: venv\Scripts\activate
+        On MAC Run: venv/bin/activate
+        On WINDOWS Run: venv\Scripts\activate
 
-        5.2.1 If the activate command generates the message "Activate.ps1"
-            Run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+        5.2.1 (WINDOWS ONLY) If the activate command in step 5.2 generates the error-message "Activate.ps1".
+            5.2.1.1 Run: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+            5.2.1.2 Repeat step 5.2 and continue on to step 5.3
 
     5.3 To download the required frameworks and modules.
         Run: pip install -r requirements.txt
@@ -107,7 +108,7 @@ https://github.com/jonfra165/Thankyou.git
         6.1.2 Choose: Preferences
         6.1.3 Choose: Settings
         6.1.4 Type: 'json' in the search bar
-        6.1.5 Under title "Launch", choose 'Edit in settings.son'
+        6.1.5 Under title "Launch" choose 'Edit in settings.json'
         6.1.6 Add: "python.linting.pylintArgs": ["--load-plugins", "pylint_flask"]
         6.1.7 Save and close
     
@@ -129,6 +130,7 @@ https://github.com/jonfra165/Thankyou.git
 9. Documentation for MariaDB and Python Virtual Environment:
     9.1 MariaDB: https://mariadb.com/kb/en/documentation/
     9.2 Python Virtual Environment: https://docs.python.org/3/tutorial/venv.html
+    9.3 Python Virtual Environment in Visual Studio Code: https://code.visualstudio.com/docs/python/environments
 
     Framework documentation:
     9.3 Flask: https://flask.palletsprojects.com/en/1.1.x/
