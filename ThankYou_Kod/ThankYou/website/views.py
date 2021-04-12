@@ -25,3 +25,9 @@ def home():
     
     return render_template('home.html', user=user, note=note)
 
+@views.route("/profile")
+@login_required #User can only see the profile page if they are logged in
+def profile():
+    ''' This view returns the profile page '''
+    user = current_user
+    return render_template("profile.html", user=user)
