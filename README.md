@@ -13,14 +13,15 @@ https://github.com/jonfra165/Thankyou.git
     2.1 When MariaDB is downloaded you need to add a path to it. To do this follow the following steps:
         2.1.1 Copy the path to the bin-folder within the MariaDB-folder.
             Example: C:\Program Files\MariaDB 10.5\bin
-        2.1.2 Open up 'Control Panel'
-        2.1.3 Choose 'Systems'
-        2.1.4 Choose 'Advanced system setting'
-        2.1.5 Choose 'Environment Variables'
-        2.1.6 In the first box, choose 'Path' and then click 'Edit' below this box.
-        2.1.7 Choose 'New'
-        2.1.8 Paste the path
-        2.1.9 Choose 'OK' to save
+        2.1.2 Open up: 'Control Panel'
+        2.1.3 Choose: 'Systems'
+        2.1.4 Choose: 'Advanced system setting'
+        2.1.5 Choose: 'Environment Variables'
+        2.1.6 In the first box choose: 'Path' 
+        2.1.7 Below the first box choose: 'Edit' (DO NOT CHOOSE 'New'!)
+        2.1.8 In the new window choose: 'New'
+        2.1.9 Paste the path
+        2.1.10 Choose 'OK' to save
 
     2.2. You now need to create a basic setup and the database which will be used.
         2.1 Open up Windows Powershell
@@ -30,7 +31,7 @@ https://github.com/jonfra165/Thankyou.git
         2.5 Run: CREATE DATABASE testdb;
         2.6 Run: exit;
 
-3. (MAC ONLY) To download MariaDB on MAC, follow the following steps:
+3. (MAC ONLY) To download MariaDB on MAC follow the steps below or follow the steps in this link: https://mariadb.com/resources/blog/installing-mariadb-10-1-16-on-mac-os-x-with-homebrew/
 
     3.1 To download MariaDB you first need to install Xcode and Homebew, in Terminal:
         3.1.1 Run: xcode-select --install
@@ -70,18 +71,19 @@ https://github.com/jonfra165/Thankyou.git
     
 4. (WINDOWS ONLY) Before you download the required frameworks you need to add a path to your Python-folder. To do this follow the following steps: (Skip this step if you already have this path.)
     
-    4.1 Copy the path to the latest version folder of your python within the Python-folder.
+    4.1 Copy the path to the latest python version folder within the Python-folder.
             Example: C:\Users\username\AppData\Local\Programs\Python\Python39
-        4.1.2 Open up 'Control Panel'
-        4.1.3 Choose 'Systems'
-        4.1.4 Choose 'Advanced system setting'
-        4.1.5 Choose 'Environment Variables'
-        4.1.6 In the first box, choose 'Path' and then click 'Edit' below this box.
-        4.1.7 Choose 'New'
-        4.1.8 Paste the path
+        4.1.1 Open up: 'Control Panel'
+        4.1.2 Choose: 'Systems'
+        4.1.3 Choose: 'Advanced system setting'
+        4.1.4 Choose: 'Environment Variables'
+        4.1.5 In the first box choose: 'Path'
+        4.1.6 Below the first box choose: 'Edit' (DO NOT CHOOSE 'New'!)
+        4.1.7 In the new window choose: 'New'
+        4.1.9 Paste the path
         4.1.9 Choose 'OK' to save
     
-    4.2 Repeat the steps above but with a path that goes to the Scripts-folder within the latest version of your python folder.
+    4.2 Repeat the steps above (4.1) but with a path that goes to the Scripts-folder within the latest python version folder.
         4.2.1 Example: C:\Users\username\AppData\Local\Programs\Python\Python39\Scripts
 
 5. You will need to download the required frameworks through python's virtual environment in the project folder.
@@ -121,13 +123,15 @@ https://github.com/jonfra165/Thankyou.git
 #POSSIBLE ERRORS
 
 8. List of possible errors:
+
     8.1 'E1101: Instance of 'SQLAlchemy' has no 'Column' member (no-member).' 
         8.1.1 Visit this link: https://stackoverflow.com/questions/53975234/instance-of-sqlalchemy-has-no-column-member-no-member
-        8.1.2 Contact us.
+        8.1.2 Contact us, see section 10.
 
 #Documentation links
 
 9. Documentation for MariaDB and Python Virtual Environment:
+
     9.1 MariaDB: https://mariadb.com/kb/en/documentation/
     9.2 Python Virtual Environment: https://docs.python.org/3/tutorial/venv.html
     9.3 Python Virtual Environment in Visual Studio Code: https://code.visualstudio.com/docs/python/environments
@@ -140,4 +144,6 @@ https://github.com/jonfra165/Thankyou.git
 #Contact Information
 
 10. Contact information
-    10.1 SOON TO BE ADDED
+
+    DISCORD
+    10.1 ADD USER Miu#8615
