@@ -1,16 +1,13 @@
-<!-- This is the base template -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %} ThankYou {% endblock %}</title>
-    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav>
         {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
         <a href="/">Home</a>
@@ -21,7 +18,7 @@
         {% endif %}
     </nav>
 
-    <!-- Error messages -->
+    <!-- Error and sucessful flash-messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
 
     {% if messages %}
