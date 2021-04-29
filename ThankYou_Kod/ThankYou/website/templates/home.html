@@ -10,8 +10,15 @@
 <!--print column date and data from table Note. Get the values from view.py-->
 <ul id='notes'>
     {% for notes in note %}
-    <li>{{ notes.date }}</li>
-    <li>{{ notes.data }}</li>
+    <li>{{ notes.date }} {{notes.data }}</li>
+    {% endfor %}
+</ul>
+
+<h1>YAYA</h1>
+
+<ul id='notes'>
+    {% for test_notes in test_note %}
+    <li>{{ test_notes.date }} {{test_notes.data }}</li>
     {% endfor %}
 </ul>
 
