@@ -24,7 +24,7 @@ def login():
             else: #Incorrect password
                 flash('Incorrect password, try again', category='error')
         else: #If email doesn't have a row in the table then it does not exist
-            flash('Email does\'nt exist!', category='error')
+            flash('Email doesn\’t  exist!', category='error')
 
     return render_template('login.html')  
             

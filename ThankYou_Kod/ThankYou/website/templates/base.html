@@ -11,7 +11,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav>
+    <div class="navbar">
         {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
         <a href="/">Home</a>
         <a href="/logout">Logout</a>
@@ -19,8 +19,27 @@
         <a href="/login">Login</a>
         <a href="/sign-up">Sign up</a>
         {% endif %}
-    </nav>
+        <div class="dropdown">
+        <button class="dropbtn">Dropdown 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+        </div> 
+    </div>
+    <h1>Grid Layout</h1>
 
+    <p>This grid layout contains six columns and three rows:</p>
+    
+    <div class="grid-container">
+      <div class="item1">Header</div>
+      <div class="item2">Main</div>  
+      <div class="item3">Right</div>
+      <div class="item4">Footer</div>
+    </div>
     <!-- Error messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
 
