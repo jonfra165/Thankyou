@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from .models import Note
 from . import db
 import json
-import datetime
+import re
 
 views = Blueprint('views', __name__)
 
@@ -43,15 +43,20 @@ def calendar():
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
     
-    test1 = []
+    note_list = []
     for notes in note:
         x = {
             "startDate": notes.date,
             "endDate": notes.date,
             "summary": notes.data
         }
-        test1.append(x)
-        y = json.dumps(test1, indent=4, sort_keys=True, default=str)
-    # the result is a JSON string:
+        note_list.append(x)
 
-    return render_template("calendar.html", y=y)
+        y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
+
+
+    json_note = re.sub(r'(?<!: )"(\S*?)"', '\\1', y) #Remove quotation marks from dictionary keys
+
+    print(json_note)
+
+    return render_template("calendar.html", json_note=json_note)
