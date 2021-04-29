@@ -27,7 +27,8 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     
-    create_database(app)
+    #Connect to MariaDB
+    sqlalchemy_mariadb(app)
 
     #Login Manager
     login_manager = LoginManager()
@@ -41,6 +42,6 @@ def create_app():
 
     return app
 
-def create_database(app):
+def sqlalchemy_mariadb(app):
+    '''Connects SQLAlchemy to MariaDB to edit database through code'''
     db.create_all(app=app)
-    print('Created Database!')

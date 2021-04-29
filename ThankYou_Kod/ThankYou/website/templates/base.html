@@ -1,12 +1,10 @@
-<!-- This is the base template -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %} ThankYou {% endblock %}</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -15,6 +13,7 @@
         {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
         <a href="/">Home</a>
         <a href="/logout">Logout</a>
+        <a href="/profile">Profile</a>
         {% else %} <!--If user is not logged in, show login and sign-up-->
         <a href="/login">Login</a>
         <a href="/sign-up">Sign up</a>
