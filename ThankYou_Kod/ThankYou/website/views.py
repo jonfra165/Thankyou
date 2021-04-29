@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, url_for, redirect, request, flash
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+import requests
 
 views = Blueprint('views', __name__)
 
@@ -19,11 +20,22 @@ def home():
             db.session.add(new_note)
             db.session.commit()
             flash('Note added!', category='success')
+
+
+    response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
+    quote_author = response.text
+
+    if "(" not in quote_author:
+        print("Cannot accept quote")
+    else:
+        print(quote_author)
+
+    quote_author_list = quote_author.replace('(', '').replace(')', '').split(".")
     
     user = current_user.id 
     note = Note.query.all() #get all values from table Note
-    
-    return render_template('home.html', user=user, note=note)
+    quote = quote_author_list
+    return render_template('home.html', user=user, note=note, quote=quote)
 
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
