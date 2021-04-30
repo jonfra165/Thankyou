@@ -1,24 +1,21 @@
-{% extends "base.html" %} <!-- AS A STRING -->
+{% extends "base.html" %}  
 
-{% block title %} Login {% endblock %}
+{% block title %} Login {% endblock %} 
 
 
 {% block content %}
-<h1>This is the login page!</h1>
+<h1>This is the login page!</h1> 
 
 <h3>Login</h3>
-<form method="POST">
+<form method="POST"> 
+    
     <label for="email">Email:</label><br>
     <input type="email" name="email" id="email" placeholder="Enter your email..."><br>
+    
     <label for="password">Password:</label><br>
     <input type="password" name="password" id="password" placeholder="Enter your password..."><br>
 
-    <input type="submit" name="#" id="#" value="Submit">
+    <input type="submit" value="Submit">
 </form>
 
 {% endblock %}
-
-
-
-
-

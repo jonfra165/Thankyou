@@ -1,7 +1,33 @@
-{% extends "base.html" %} <!-- AS A STRING -->
+{% extends "base.html" %}
 
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<h1>This is the home page!</h1>        
+<h1>This is the home page!</h1>   
+
+<h2>Notes</h2>
+
+<!--print column date and data from table Note. Get the values from view.py-->
+<ul id='notes'>
+    {% for notes in note %}
+    <li>{{ notes.date }} {{notes.data }}</li>
+    {% endfor %}
+</ul>
+
+<h1>YAYA</h1>
+
+<ul id='notes'>
+    {% for test_notes in test_note %}
+    <li>{{ test_notes.date }} {{test_notes.data }}</li>
+    {% endfor %}
+</ul>
+
+<form method="POST">
+    <textarea name="note" id="note" cols="30" rows="10"></textarea>
+    <br>
+    
+    <input type="submit" value="Save note">
+</form>
+
+<h3>{{quote}}</h3>
 {% endblock %}

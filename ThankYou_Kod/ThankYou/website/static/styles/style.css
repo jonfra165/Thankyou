@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* Navbar */
+<<<<<<< Updated upstream
+.navbar {
+=======
+  .navbar {
+>>>>>>> Stashed changes
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+<<<<<<< Updated upstream
+.navbar a {
+=======
+  .navbar a {
+>>>>>>> Stashed changes
+    float: right;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+<<<<<<< Updated upstream
+.dropdown {
+=======
+  .dropdown {
+>>>>>>> Stashed changes
+    float: right;
+    overflow: hidden;
+  }
+  
+<<<<<<< Updated upstream
+.dropdown .dropbtn {
+=======
+  .dropdown .dropbtn {
+>>>>>>> Stashed changes
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: blue;
+  }
+  
+<<<<<<< Updated upstream
+.dropdown-content {
+=======
+  .dropdown-content {
+>>>>>>> Stashed changes
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+<<<<<<< Updated upstream
+.dropdown-content a {
+=======
+  .dropdown-content a {
+>>>>>>> Stashed changes
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+<<<<<<< Updated upstream
+.dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+.dropdown:hover .dropdown-content {
+=======
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+>>>>>>> Stashed changes
+    display: block;
+  }
+
+  /* Grid */
+<<<<<<< Updated upstream
+.item1 { grid-area: header; }
+.item2 { grid-area: main; }
+.item3 { grid-area: right; }
+.item4 { grid-area: footer; }
+  
+.grid-container {
+=======
+  .item1 { grid-area: header; }
+  .item2 { grid-area: main; }
+  .item3 { grid-area: right; }
+  .item4 { grid-area: footer; }
+  
+  .grid-container {
+>>>>>>> Stashed changes
+    display: grid;
+    grid-template-areas:
+      'header header header header'
+      'main main right right'
+      'footer footer footer footer';
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  
+<<<<<<< Updated upstream
+.grid-container > div {
+=======
+  .grid-container > div {
+>>>>>>> Stashed changes
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+h1 {
+    color: red;
+}
+#profile img {
+    width: 100px;
+    height: 100px;
+}

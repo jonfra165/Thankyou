@@ -1,0 +1,16 @@
+click==7.1.2
+Flask==1.1.2
+Flask-Login==0.5.0
+Flask-SQLAlchemy==2.5.1
+<<<<<<< Updated upstream
+greenlet==1.0.0
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+mysql-connector==2.2.9
+=======
+SQLAlchemy==1.1.1
+>>>>>>> Stashed changes
+PyMySQL==1.0.2
+SQLAlchemy==1.4.4
+Werkzeug==1.0.1

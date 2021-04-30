@@ -1,0 +1,32 @@
+Good to know:
+MariaDB is not case sensitive.
+MariaDB's syntax is identical to MYSQL's syntax.
+
+1. To open MariaDB:
+
+    1.1 ON WINDOWS.
+        1.1.2 Run: mysql -u root -p
+        1.1.3 Type: password
+
+    1.2 ON MAC (WITH PASSWORD).
+        1.2.1 Run: mariadb -u root -p 
+        1.2.2 Type: password
+
+    1.3 ON MAC (WITHOUT PASSWORD).
+        1.3.1 Run: mariadb
+
+2. To see all databases:
+    2.1 Type: SHOW DATABASES; 
+
+3. To create a database:
+    3.1 Type: CREATE DATABASE dbname;
+
+4. To delete a database:
+    4.1 Type: DROP DATABASE dbname;
+
+5. To edit (create, trigger, update, select, delete, etc...) a database you need to select it:
+    5.1 USE dbname;
+    5.2 Type in a query.
+
+6. To exit MariaDB:
+    6.1 Type: Exit;
