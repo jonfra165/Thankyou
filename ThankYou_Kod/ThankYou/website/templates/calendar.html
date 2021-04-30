@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,49 +15,86 @@
     }
   </style>
 </head>
+
 <body>
   <div class="grid">
-    <div>
-      {{ json_note }}
+    <div id="posts">
+
     </div>
     <div id="container" class="calendar-container"></div>
   </div>
 
 
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
-<script src="./static/jquery.simple-calendar.js"></script>
-<script>
-  $(document).ready(function(){
-    const posts = [
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="./static/jquery.simple-calendar.js"></script>
+  <script>
+    function formatDate(date) {
       /*
-      {
-        startDate: "2021-04-29",
-        endDate: "2021-04-29",
-        summary: "My first post!"
-      }
+        Funktion som tar ett datum (JS-objekt) och 
+        returnar datum i formatet yyyy-mm-dd
       */
-      {
-        startDate: "2021-04-29",
-        endDate: "2021-04-29",
-        summary: "My first post!"
-      },
-      {
-        startDate: "2021-04-30",
-        endDate: "2021-04-30",
-        summary: "My second post!"
-      }
-    ];
+      var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
-    $("#container").simpleCalendar({
-      events: posts,
-      onDateSelect: function (date, events) {
-        console.log(date);
-      }
+      if (month.length < 2)
+        month = '0' + month;
+      if (day.length < 2)
+        day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
+    // Väntar tills sidan har laddats klart (tills hela DOM-trädet är konstruerat)
+    $(document).ready(function () {
+
+      // Skickar ett ajax-anrop till adressen "/calendar-events" (där alla poster för inloggad användare returneras i JSON)
+      $.ajax({
+        url: "/calendar-events"
+      }).done(function (data) {
+        // Allt fungerar bra, vi fick ett svar från URL som sparas i parametern "data"
+
+        // Läser in listan med poster och gör om det till datastrukturer (lista med objekt)
+        const posts = JSON.parse(data);
+
+        // Bygger vår kalender (simple-calendar)
+        $("#container").simpleCalendar({
+          events: posts, // Alla poster som ska visas i kalendern (det blir en "prick" för varje datum en post finns)
+          onDateSelect: function (date, events) {
+            // När vi klickat på ett datum i kalendern, hämta alla inlägg det valda datumet
+            $.ajax({
+              url: "/calendar-events-by-date/"+formatDate(date)
+            }).done(function(data) {
+              const posts = JSON.parse(data);
+
+              // Tar bort alla barn (tömmer div-elementet) på ev. poster
+              $("#posts").empty();
+
+              // forEach (alltså för varje objekt (post) i listan) skriv ut posten på sidan
+              posts.forEach(function(post, index) {
+                // post => Själva posten
+                // index => platsen i listan som vi är på (i vår forEach-loop)
+
+                // Letar upp elementet med id:t "posts" och lägger till en sträng med element
+                $("#posts").append(`
+                  <h2>${post.summary}</h2>
+                  <img src="${post.image}" alt="Tillhörande bild till inlägget">
+                  <small>${post.startDate}</small>
+                  <hr>
+                `);
+              });
+            });
+
+          }
+        });
+      }).fail(function(error) {
+        console.log(error);
+      });
     });
-});
-</script>
+  </script>
 </body>
+
 </html>

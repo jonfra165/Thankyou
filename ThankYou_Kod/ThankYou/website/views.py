@@ -49,10 +49,15 @@ def profile():
     ''' This view returns the profile page '''
     user = current_user
     return render_template("profile.html", user=user)
-@views.route("/calendar")
 
+@views.route("/calendar")
 @login_required
 def calendar():
+    return render_template("calendar.html")
+
+@views.route("/calendar-events")
+@login_required
+def calendar_events():
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
     
@@ -65,11 +70,29 @@ def calendar():
         }
         note_list.append(x)
 
-        y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
+    
+    y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
+    # json_note = re.sub(r'(?<!: )"(\S*?)"', '\\1', y) #Remove quotation marks from dictionary keys
 
-    json_note = re.sub(r'(?<!: )"(\S*?)"', '\\1', y) #Remove quotation marks from dictionary keys
+    return y
 
-    print(json_note)
+@views.route("/calendar-events-by-date/<date>")
+@login_required
+def calendar_events_by_date(date):
+    user = current_user.id 
+    note = Note.query.filter_by(user_id=user).filter_by(date=date).all()
+    
+    note_list = []
+    for notes in note:
+        x = {
+            "startDate": notes.date,
+            "endDate": notes.date,
+            "summary": notes.data
+        }
+        note_list.append(x)
 
-    return render_template("calendar.html", json_note=json_note)
+    
+    y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
+
+    return y
