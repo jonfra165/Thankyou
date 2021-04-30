@@ -2,13 +2,9 @@ from flask import Blueprint, render_template, url_for, redirect, request, flash
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
-<<<<<<< Updated upstream
 import requests
-import json
 import re
-=======
 import json
->>>>>>> Stashed changes
 
 views = Blueprint('views', __name__)
 
@@ -37,20 +33,15 @@ def home():
         print(quote_author)
 
     quote_author_list = quote_author.replace('(', '').replace(')', '').split(".")
+    quote = quote_author_list
     
     user = current_user.id 
-<<<<<<< Updated upstream
-    note = Note.query.all() #get all values from table Note
-    quote = quote_author_list
-    return render_template('home.html', user=user, note=note, quote=quote)
-=======
     note = Note.query.filter_by(user_id=user).all()
     for notes in note:
         print(notes.date)
         print(notes.data)
 
-    return render_template('home.html', user=user, note=note)
->>>>>>> Stashed changes
+    return render_template('home.html', user=user, note=note, quote=quote)
 
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
