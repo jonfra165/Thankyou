@@ -11,9 +11,10 @@
     <!-- Navigation -->
     <div class="navbar">
         {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
-        <a href="/">Home</a>
-        <a href="/logout">Logout</a>
-        <a href="/profile">Profile</a>
+        <a href='/'>Home</a>
+        <a href='/logout'>Logout</a>
+        <a href='/profile'>Profile</a>
+        <a href='/calendar'>Calendar</a>
         {% else %} <!--If user is not logged in, show login and sign-up-->
         <a href="/login">Login</a>
         <a href="/sign-up">Sign up</a>
