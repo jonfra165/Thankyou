@@ -4,6 +4,7 @@ from .models import Note
 from . import db
 import requests
 import json
+import re
 
 views = Blueprint('views', __name__)
 
