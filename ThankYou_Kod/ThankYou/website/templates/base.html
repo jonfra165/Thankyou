@@ -10,30 +10,6 @@
 
 <body>
     <div id='wrapper'>
-        
-            <!-- Navigation -->
-        <div class="navbar">
-            {% if current_user.is_authenticated %} <!--If user is logged in, show home and logout-->
-            <a href='/'>Home</a>
-            <a href='/logout'>Logout</a>
-            <a href='/profile'>Profile</a>
-            <a href='/calendar'>Calendar</a>
-            {% else %} <!--If user is not logged in, show login and sign-up-->
-            <a href="/login">Login</a>
-            <a href="/sign-up">Sign up</a>
-            {% endif %}
-            <div class="dropdown">
-                <button class="dropbtn">Dropdown 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div> 
-        </div>
-
         <!-- Error messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
 
