@@ -133,3 +133,15 @@ body {
     width: 100px;
     height: 100px;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+}
+
+.grid > #posts {
+  background-color: aquamarine;
+  padding: 45px;
+  text-align: center;
+}
