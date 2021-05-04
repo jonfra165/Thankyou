@@ -14,6 +14,16 @@ def home():
     '''This view returns the home page'''
     if request.method == 'POST':
         note = request.form.get('note')
+        if 'file' not in request.files:
+            print('No file part')
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            print('No selected file')
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         if len(note) < 1: #If less than one character return an error
             flash('Note is too short!', category='error')
@@ -22,7 +32,6 @@ def home():
             db.session.add(new_note)
             db.session.commit()
             flash('Note added!', category='success')
-
 
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_author = response.text
