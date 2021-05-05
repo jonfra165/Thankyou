@@ -83,7 +83,7 @@
               url: "/calendar-events-by-date/"+formatDate(date)
             }).done(function(data) {
               const posts = JSON.parse(data);
-
+              
               // Tar bort alla barn (tömmer div-elementet) på ev. poster
               $("#posts").empty();
 
@@ -91,11 +91,11 @@
               posts.forEach(function(post, index) {
                 // post => Själva posten
                 // index => platsen i listan som vi är på (i vår forEach-loop)
-
+                console.log(post.image)
                 // Letar upp elementet med id:t "posts" och lägger till en sträng med element
                 $("#posts").append(`
                   <h2>${post.summary}</h2>
-                  <img src="${post.image}" alt="Tillhörande bild till inlägget">
+                  <img src="${post.image}" alt="Tillhörande bild till inlägget" width="200" height="200">
                   <small>${post.startDate}</small>
                   <hr>
                 `);
