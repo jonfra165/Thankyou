@@ -22,28 +22,29 @@
                 </div> 
             </div>
 
-<h1>This is the home page!</h1>   
+<h1>ThankYou</h1>
 
-<h2>Notes</h2>
-
-<!--print column date and data from table Note. Get the values from view.py-->
-<ul id='notes'>
-    {% for notes in note %}
-    <li>{{ notes.date }} {{notes.data }}</li>
-    {% endfor %}
-</ul>
-
-<ul id='notes'>
-    {% for test_notes in test_note %}
-    <li>{{ test_notes.date }} {{test_notes.data }}</li>
-    {% endfor %}
-</ul>
-
-<form method="POST">
-    <textarea name="note" id="note" cols="30" rows="10"></textarea>
-    <br>
+<form action="/" method="POST" enctype="multipart/form-data">
+    <label for="note1">Post 1</label><br/>
+    <textarea name="note1" id="note1" placeholder="Skriv här…" cols="40" rows="5"></textarea>
     
-    <input type="submit" value="Save note">
+    <label for="filename"></label><br/>
+    <input type="file" id="file1" name="file1"/><br/>
+    
+    <label for="note2">Post 2</label><br/>
+    <textarea name="note2" id="note2" placeholder="Skriv här…" cols="40" rows="5"></textarea>
+    
+    <label for="filename"></label><br/>
+    <input type="file" id="file2" name="file2"/><br/>
+    
+    <label for="note3">Post 3</label><br/>
+    <textarea name="note3" id="note3" placeholder="Skriv här…" cols="40" rows="5"></textarea>
+
+    <label for="filename"></label><br/>
+    <input type="file" id="file3" name="file3"/><br/>
+    
+    <input type=submit value=Upload>
+    
 </form>
 
 <h3>{{quote}}</h3>
