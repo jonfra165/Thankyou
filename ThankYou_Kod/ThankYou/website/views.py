@@ -96,6 +96,7 @@ def calendar():
 @views.route("/calendar-events")
 @login_required
 def calendar_events():
+    ''' add comment '''
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
     
@@ -109,16 +110,15 @@ def calendar_events():
         }
         note_list.append(x)
 
-    
-    y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
-    # json_note = re.sub(r'(?<!: )"(\S*?)"', '\\1', y) #Remove quotation marks from dictionary keys
+    y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
     return y
 
 @views.route("/calendar-events-by-date/<date>")
 @login_required
 def calendar_events_by_date(date):
+    ''' add comment '''
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).filter_by(date=date).all()
     

@@ -54,9 +54,9 @@ def sign_up():
         elif len(password1) < 8:
             flash('Password must be greater than 8 characters.', category='error')
         elif not any(p.isupper() for p in password1): # Check if password includes at least one capital letter 
-                flash('Password must include at least one capital letter.', category='error')
+            flash('Password must include at least one capital letter.', category='error')
         elif not any(p.isdigit() for p in password1): # Check if password includes at least one number 
-                flash('Password must include at least one number.', category='error')
+            flash('Password must include at least one number.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
         elif not any(char.isupper() for char in password1):

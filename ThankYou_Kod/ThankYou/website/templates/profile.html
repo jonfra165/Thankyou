@@ -2,30 +2,20 @@
 
 {% block content %}
 
-            <!-- Navigation -->
-            <div class="navbar">
-                <a href='/'>Home</a>
-                <a href='/logout'>Logout</a>
-                <a href='/profile'>Profile</a>
-                <a href='/calendar'>Calendar</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div> 
-            </div>
+<!-- Navigation -->
+<div class="navbar">
+    <a href='/'>Home</a>
+    <a href='/logout'>Logout</a>
+    <a href='/profile'>Profile</a>
+    <a href='/calendar'>Calendar</a>
+</div>
 
-    <div id="profile">
-        <h1>Profile</h1>
-        
-        <img src="https://iconape.com/wp-content/png_logo_vector/user-circle.png" alt="User Image">
+<div id="profile">
+    <h1>Profile</h1>
 
-        <h2>Name: {{ user.first_name }}</h2>
-        <h2>Email: {{ user.email }}</h2>
-    </div>
+    <img src="https://iconape.com/wp-content/png_logo_vector/user-circle.png" alt="User Image">
+
+    <h2>Name: {{ user.first_name }}</h2>
+    <h2>Email: {{ user.email }}</h2>
+</div>
 {% endblock %}

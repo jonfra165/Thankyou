@@ -20,15 +20,24 @@ body {
 
   /*LOGIN*/
   #log-in {
-    grid-area: right2;
+  grid-area: right2;
   }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+    }
+  
+    .grid > #posts {
+    background-color: aquamarine;
+    padding: 45px;
+    text-align: center;
+    }
 
   #log-in-background {
     grid-area: main;
     background-color: pink;
   }
-
-    
   .form-signin {
     width: 100%;
     max-width: 330px;
@@ -63,14 +72,12 @@ body {
   #sign-up{
     grid-area: main;
   }
-
   /* Navbar UNIVERSAL*/
   .navbar {
     grid-area: header;
     overflow: hidden;
     background-color: #333;
   }
-  
   .navbar a {
     float: right;
     font-size: 16px;
@@ -79,69 +86,11 @@ body {
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  .dropdown {
-    float: right;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    font-size: 16px;  
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
+  .navbar a:hover {
     background-color: blue;
   }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-
   /*PROFILE*/
-
-#profile img {
+  #profile img {
     width: 100px;
     height: 100px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 40px;
-}
-
-.grid > #posts {
-  background-color: aquamarine;
-  padding: 45px;
-  text-align: center;
-}
+  }
