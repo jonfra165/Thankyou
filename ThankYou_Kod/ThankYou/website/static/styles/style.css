@@ -1,8 +1,14 @@
-  /*UNIVERSAL*/
-body {
-    margin: 0;
-    padding: 0;
+/* Nour custom css (start) */
+.th-bg-pink {
+  background-color: #faebeb
 }
+
+
+
+/* Nour custom css (end) */
+
+
+
 
 #wrapper {
     font-family: Arial, Helvetica, sans-serif;
