@@ -66,20 +66,19 @@ def home():
             flash('Note added!', category='success')
 
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
-    quote_author = response.text
+    quote_str = response.text
+    quote_list = quote_str.split('(')
 
-    if "(" not in quote_author:
-        print("Cannot accept quote")
+    quote = quote_list[0]
+    if quote_list[1] != '':
+        author = quote_list[1].replace(')', '')
     else:
-        print(quote_author)
+        author = 'Anonymous'
 
-    quote_author_list = quote_author.replace('(', '').replace(')', '').split(".")
-    quote = quote_author_list
-    
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
-   
-    return render_template('home.html', user=user, note=note, quote=quote)
+
+    return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
