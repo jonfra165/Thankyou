@@ -4,15 +4,30 @@
 
 {% block content %}
 
-<!-- Navigation -->
-<div class="navbar">
-    <a href='/'>Home</a>
-    <a href='/logout'>Logout</a>
-    <a href='/profile'>Profile</a>
-    <a href='/calendar'>Calendar</a>
+<!-- Logo -->
+<div class="col-12 pt-4">
+    <img class="mx-auto mb-3 d-block" src="http://www.anewraag.com/wp-content/uploads/2019/09/download-thank-you-png-images-transparent-gallery-advertisement-781.png" alt="logo" width="200" height="100">
 </div>
 
-<h1>ThankYou</h1>
+<!-- Navigation -->
+<nav class="th-bg-pink py-2">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link text-dark active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/calendar">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/logout">Log out</a>
+          </li>
+    </ul>
+</nav>
+
+
 
 <form action="/" method="POST" enctype="multipart/form-data">
     <label for="note1">Post 1</label><br/>

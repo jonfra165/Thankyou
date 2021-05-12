@@ -3,6 +3,10 @@
   background-color: #faebeb
 }
 
+ul li:hover {
+  background-color: #f8dede;
+}
+
 
 
 /* Nour custom css (end) */
