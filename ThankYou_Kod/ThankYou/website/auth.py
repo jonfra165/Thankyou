@@ -4,6 +4,7 @@ from .models import User, Note #import user table
 from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
 from . import db #import database "cursor"
 from flask_login import login_user, login_required, logout_user, current_user
+from validate_email import validate_email
 
 auth = Blueprint('auth', __name__)
 
@@ -43,12 +44,16 @@ def sign_up():
         fname = request.form.get('fname')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-
+        validate = validate_email(email)
+        print(email)
+    
         user = User.query.filter_by(email=email).first()
         if user: 
             flash('Email already exists!', category='error')
         elif len(email) < 4:
             flash('Email must be greater than 4 characters.', category='error')
+        elif validate == False: 
+            flash('This email does not exist', category='error')
         elif len(fname) < 2:
             flash('First name must be greater than 2 characters.', category='error')
         elif password1 != password2:
