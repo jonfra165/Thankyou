@@ -4,48 +4,45 @@
 
 {% block content %}
 
-            <!-- Navigation -->
-            <div class="navbar">
-                <a href='/'>Home</a>
-                <a href='/logout'>Logout</a>
-                <a href='/profile'>Profile</a>
-                <a href='/calendar'>Calendar</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div> 
-            </div>
+<!-- Navigation -->
+<div class="navbar">
+    <a href='/'>Home</a>
+    <a href='/profile'>Profile</a>
+    <a href='/calendar'>Calendar</a>
+    <a href='/logout'>Logout</a>
+</div>
+<div id="quote-home">
+    <figure class="text-end">
+        <blockquote class="blockquote">
+            <p>{{quote}}</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            <cite title="Source Title">{{author}}</cite>
+        </figcaption>
+    </figure>
+</div>
+<div class="posts-home">
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <p>What are you thankful for today?</p>
+        <label for="note1">Post 1</label><br/>
+        <textarea name="note1" id="note1" placeholder="Skriv här…" cols="20" rows="5"></textarea>
+        
+        <label for="filename"></label><br/>
+        <input type="file" id="file1" name="file1"/><br/>
+        
+        <label for="note2">Post 2</label><br/>
+        <textarea name="note2" id="note2" placeholder="Skriv här…" cols="20" rows="5"></textarea>
+        
+        <label for="filename"></label><br/>
+        <input type="file" id="file2" name="file2"/><br/>
+        
+        <label for="note3">Post 3</label><br/>
+        <textarea name="note3" id="note3" placeholder="Skriv här…" cols="20" rows="5"></textarea>
 
-<h1>ThankYou</h1>
-
-<form action="/" method="POST" enctype="multipart/form-data">
-    <label for="note1">Post 1</label><br/>
-    <textarea name="note1" id="note1" placeholder="Skriv här…" cols="40" rows="5"></textarea>
-    
-    <label for="filename"></label><br/>
-    <input type="file" id="file1" name="file1"/><br/>
-    
-    <label for="note2">Post 2</label><br/>
-    <textarea name="note2" id="note2" placeholder="Skriv här…" cols="40" rows="5"></textarea>
-    
-    <label for="filename"></label><br/>
-    <input type="file" id="file2" name="file2"/><br/>
-    
-    <label for="note3">Post 3</label><br/>
-    <textarea name="note3" id="note3" placeholder="Skriv här…" cols="40" rows="5"></textarea>
-
-    <label for="filename"></label><br/>
-    <input type="file" id="file3" name="file3"/><br/>
-    
-    <input type=submit value=Upload>
-    
-</form>
-
-<h3>{{quote}}</h3>
+        <label for="filename"></label><br/>
+        <input type="file" id="file3" name="file3"/><br/>
+        
+        <input type=submit value=Upload>
+    </form>
+</div>
 {% endblock %}

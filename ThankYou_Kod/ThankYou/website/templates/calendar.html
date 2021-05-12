@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Calendar</title>
+  <title>Calendar</title>
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="./static/styles/simple-calendar.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css">
@@ -14,31 +14,30 @@
 </head>
 
 <body>
-              <!-- Navigation -->
-              <div class="navbar">
-                  <a href='/'>Home</a>
-                  <a href='/profile'>Profile</a>
-                  <a href='/logout'>Logout</a>
-                  <div class="dropdown">
-                      <button class="dropbtn">Dropdown 
-                          <i class="fa fa-caret-down"></i>
-                      </button>
-                      <div class="dropdown-content">
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
-                      </div>
-                  </div> 
-              </div>
+<!-- Navigation -->
+<div class="navbar">
+  <a href='/'>Home</a>
+  <a href='/profile'>Profile</a>
+  <a href='/calendar'>Calendar</a>
+  <a href='/logout'>Logout</a>
+</div>
 
-  <div class="grid">
-    <div id="posts">
-
+<div class="grid">
+  <div id="posts">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div id="container" class="calendar-container"></div>
   </div>
-
-
+  <div id="container" class="calendar-container"></div>
+</div>
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -85,7 +84,7 @@
               const posts = JSON.parse(data);
               
               // Tar bort alla barn (tömmer div-elementet) på ev. poster
-              $("#posts").empty();
+              $(".carousel-inner").empty();
 
               // forEach (alltså för varje objekt (post) i listan) skriv ut posten på sidan
               posts.forEach(function(post, index) {
@@ -93,12 +92,16 @@
                 // index => platsen i listan som vi är på (i vår forEach-loop)
                 console.log(post.image)
                 // Letar upp elementet med id:t "posts" och lägger till en sträng med element
-                $("#posts").append(`
-                  <h2>${post.summary}</h2>
-                  <img src="${post.image}" alt="Tillhörande bild till inlägget" width="200" height="200">
-                  <small>${post.startDate}</small>
-                  <hr>
+                $(".carousel-inner").append(`
+                  <div class="carousel-item">
+                    <img src="${post.image}" alt="Tillhörande bild till inlägget" width="600em" height="600em">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>${post.summary}</h5>
+                    </div>
+                  </div>
                 `);
+                if (index === 0)
+                  $(".carousel-item").addClass('active')
               });
             });
 
