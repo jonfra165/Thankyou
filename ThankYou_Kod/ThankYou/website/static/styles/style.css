@@ -72,25 +72,16 @@ body {
   #sign-up{
     grid-area: main;
   }
-  /* Navbar UNIVERSAL*/
-  .navbar {
-    grid-area: header;
-    overflow: hidden;
-    background-color: #333;
-  }
-  .navbar a {
-    float: right;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  .navbar a:hover {
-    background-color: blue;
-  }
+
   /*PROFILE*/
   #profile img {
     width: 100px;
     height: 100px;
   }
+
+  /* Navbar UNIVERSAL*/
+header {
+    grid-area: header;
+  }
+
+  
