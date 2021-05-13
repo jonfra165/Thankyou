@@ -55,6 +55,7 @@ def home():
             flash('Note is too short!', category='error')
         elif len(note3) < 1: #If less than one character return an error
             flash('Note is too short!', category='error')
+        
         else: #Else, save note
             new_note1 = Note(data=note1, image=filepath1, user_id=current_user.id)
             new_note2 = Note(data=note2, image=filepath2, user_id=current_user.id)
