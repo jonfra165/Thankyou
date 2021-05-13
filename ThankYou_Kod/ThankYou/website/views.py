@@ -51,10 +51,6 @@ def home():
             file3.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file3.filename)))
         if len(note1) < 1: #If less than one character return an error
             flash('Note is too short!', category='error')
-        elif len(note2) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
-        elif len(note3) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
         
         else: #Else, save note
             new_note1 = Note(data=note1, image=filepath1, user_id=current_user.id)
