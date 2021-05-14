@@ -33,7 +33,7 @@ def home():
         note2 = request.form.get('note2')
         note3 = request.form.get('note3')
         # check if the post request has the file part
-    
+        '''
         file1 = request.files['file1']
         file2 = request.files['file2']
         file3 = request.files['file3']
@@ -49,18 +49,48 @@ def home():
         if file3 and allowed_file(file3.filename):
             filepath3 = os.path.join("/static/uploads", secure_filename(file3.filename))
             file3.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file3.filename)))
-        if len(note1) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
-        
-        else: #Else, save note
-            new_note1 = Note(data=note1, image=filepath1, user_id=current_user.id)
-            new_note2 = Note(data=note2, image=filepath2, user_id=current_user.id)
-            new_note3 = Note(data=note3, image=filepath3, user_id=current_user.id)
+        '''
+        if len(note1) > 1: #If less than one character return an error
+            new_note1 = Note(data=note1, user_id=current_user.id)
             db.session.add(new_note1)
+            db.session.commit()
+            flash('Note added!', category='success')
+        
+        #Denna fungerar inte  elif len(file1) > 1:
+        elif len(file1) > 1:  
+            new_file1 = Note(image=filepath1, user_id=current_user.id)
+            db.session.add(new_file1)
+            db.session.commit()
+        
+        elif len(note2) > 1: #If less than one character return an error
+            new_note2 = Note(data=note2, user_id=current_user.id)
             db.session.add(new_note2)
+            db.session.commit()
+            flash('Note added!', category='success')
+
+        #Denna fungerar inte  elif len(file2) > 1:
+        elif len(file2) > 1:  
+            new_file2 = Note(image=filepath2, user_id=current_user.id)
+            db.session.add(new_file2)
+            db.session.commit()
+
+        elif len(note3) > 1: #If less than one character return an error
+            new_note3 = Note(data=note3, user_id=current_user.id)
             db.session.add(new_note3)
             db.session.commit()
             flash('Note added!', category='success')
+
+        #Denna fungerar inte  elif len(file3) > 1:
+        elif len(file3) >1:  
+            new_file3 = Note(image=filepath3, user_id=current_user.id)
+            db.session.add(new_file3)
+            db.session.commit()
+        
+        else: #Else, save note
+            flash('Note is too short!', category='error')
+        
+            
+    
             
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
