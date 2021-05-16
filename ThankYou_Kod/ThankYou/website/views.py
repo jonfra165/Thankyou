@@ -26,45 +26,7 @@ def uploaded_file(filename):
 @views.route('/', methods=['GET', 'POST'])
 @login_required #User can only see the home page if they are logged in
 def home():
-
     '''This view returns the home page'''
-    if request.method == 'POST':
-        note1 = request.form.get('note1')
-        note2 = request.form.get('note2')
-        note3 = request.form.get('note3')
-        # check if the post request has the file part
-    
-        file1 = request.files['file1']
-        file2 = request.files['file2']
-        file3 = request.files['file3']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-
-        if file1 and allowed_file(file1.filename):
-            filepath1 = os.path.join("/static/uploads", secure_filename(file1.filename))
-            file1.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file1.filename)))
-        if file2 and allowed_file(file2.filename):
-            filepath2 = os.path.join("/static/uploads", secure_filename(file2.filename))
-            file2.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file2.filename)))
-        if file3 and allowed_file(file3.filename):
-            filepath3 = os.path.join("/static/uploads", secure_filename(file3.filename))
-            file3.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file3.filename)))
-        if len(note1) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
-        elif len(note2) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
-        elif len(note3) < 1: #If less than one character return an error
-            flash('Note is too short!', category='error')
-        else: #Else, save note
-            new_note1 = Note(data=note1, image=filepath1, user_id=current_user.id)
-            new_note2 = Note(data=note2, image=filepath2, user_id=current_user.id)
-            new_note3 = Note(data=note3, image=filepath3, user_id=current_user.id)
-            db.session.add(new_note1)
-            db.session.add(new_note2)
-            db.session.add(new_note3)
-            db.session.commit()
-            flash('Note added!', category='success')
-
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
     quote_list = quote_str.split('(')
@@ -78,6 +40,70 @@ def home():
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
 
+    if request.method == 'POST':
+        note1 = request.form.get('note1')
+        note2 = request.form.get('note2')
+        note3 = request.form.get('note3')
+        # check if the post request has the file part
+    
+        file1 = request.files['file1']
+        file2 = request.files['file2']
+        file3 = request.files['file3']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+
+        new_note1 = ''
+        if note1 != '' or file1.filename != '' :
+            if file1.filename != '' and allowed_file(file1.filename):
+                filepath1 = os.path.join("/static/uploads", secure_filename(file1.filename))
+                file1.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file1.filename)))
+                if note1 != '' :
+                    new_note1 = Note(data=note1, image=filepath1, user_id=current_user.id)
+                else:
+                    new_note1 = Note(image=filepath1, user_id=current_user.id)
+            elif note1 != '' :
+                new_note1 = Note(data=note1, user_id=current_user.id)
+        else:
+            flash('Please add eather a Note or an Image to each post! (post 1)', category='error')
+            return render_template('home.html', user=user, note=note, quote=quote, author=author)
+
+        new_note2 = ''
+        if note2 != '' or file2.filename != '' :
+            if file2.filename != '' and allowed_file(file2.filename):
+                filepath2 = os.path.join("/static/uploads", secure_filename(file2.filename))
+                file2.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file2.filename)))
+                if note2 != '' :
+                    new_note2 = Note(data=note2, image=filepath2, user_id=current_user.id)
+                else:
+                    new_note2 = Note(image=filepath2, user_id=current_user.id)
+            elif note2 != '' :
+                new_note2 = Note(data=note2, user_id=current_user.id)
+        else:
+            flash('Please add eather a Note or an Image to each post! (post 2)', category='error')
+            return render_template('home.html', user=user, note=note, quote=quote, author=author)
+
+        new_note3 = ''
+        if note3 != '' or file3.filename != '' :
+            if file3.filename != '' and allowed_file(file3.filename):
+                filepath3 = os.path.join("/static/uploads", secure_filename(file3.filename))
+                file3.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file3.filename)))
+                if note3 != '' :
+                    new_note3 = Note(data=note3, image=filepath3, user_id=current_user.id)
+                else:
+                    new_note3 = Note(image=filepath3, user_id=current_user.id)
+            elif note3 != '' :
+                new_note3 = Note(data=note3, user_id=current_user.id)
+        else:
+            flash('Please add eather a Note or an Image to each post! (post 3)', category='error')
+            return render_template('home.html', user=user, note=note, quote=quote, author=author)
+        
+        # Save notes
+        if new_note1 != '' : db.session.add(new_note1)
+        if new_note2 != '' : db.session.add(new_note2)
+        if new_note3 != '' : db.session.add(new_note3)
+        db.session.commit()
+        flash('Note added!', category='success')
+    
     return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
 @views.route("/profile")
