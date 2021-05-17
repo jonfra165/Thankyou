@@ -64,7 +64,7 @@ def home():
             elif note1 != '' :
                 new_note1 = Note(data=note1, user_id=current_user.id)
         else:
-            flash('Please add eather a Note or an Image to each post! (post 1)', category='error')
+            flash('Please add eather a Note or an Image to post 1!', category='error')
             return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
         new_note2 = ''
@@ -78,9 +78,6 @@ def home():
                     new_note2 = Note(image=filepath2, user_id=current_user.id)
             elif note2 != '' :
                 new_note2 = Note(data=note2, user_id=current_user.id)
-        else:
-            flash('Please add eather a Note or an Image to each post! (post 2)', category='error')
-            return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
         new_note3 = ''
         if note3 != '' or file3.filename != '' :
@@ -93,9 +90,6 @@ def home():
                     new_note3 = Note(image=filepath3, user_id=current_user.id)
             elif note3 != '' :
                 new_note3 = Note(data=note3, user_id=current_user.id)
-        else:
-            flash('Please add eather a Note or an Image to each post! (post 3)', category='error')
-            return render_template('home.html', user=user, note=note, quote=quote, author=author)
         
         # Save notes
         if new_note1 != '' : db.session.add(new_note1)
