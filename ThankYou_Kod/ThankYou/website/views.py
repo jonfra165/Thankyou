@@ -161,3 +161,18 @@ def calendar_events_by_date(date):
     y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
     return y
+
+@views.route('/edit', methods=['GET', 'POST'])
+@login_required
+def edit():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.password = form.password.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.password.data = current_user.password
+    return render_template('edit.html', title='edit', form=form)
