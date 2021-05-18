@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Edit Profile</h1>
 
-<form>
+<form method= "POST">
     <label for="cemail">Current email:</label><br>
     <input type="text" id="cemail" name="cemail" value="{{email}}"><br>
     <label for="fname">Your first name:</label><br>
@@ -14,4 +14,23 @@
     <input type="text" id="cpassword" name="cpassword" value={{password}}><br>
     <input type="submit" value="Update">
   </form>
+
+  <div id="edit_profile">
+    
+  
+    <div id="edit_profile">
+        <form action="/save_edit" id="edit_profile" class="form-signin" method="POST">
+            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+            
+            <label for="cemail" class="sr-only">Email address</label>
+            <input type="cemail" name="cemail" id="email" class="form-control" value={{email}} required autofocus>
+            
+            <label for="fname" class="sr-only">Name</label>
+            <input type="fname" name="fname" id="inputFname" class="form-control" value={{name}}>
+    
+            <button class="btn btn-lg btn-primary btn-block" type="submit">update</button>
+        </form>
+    </div>
+  </div>
 {% endblock %}

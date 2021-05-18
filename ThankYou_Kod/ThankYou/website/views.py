@@ -182,17 +182,15 @@ def save_edit():
     fname = request.form.get('fname')
     cpassword = request.form.get('cpassword')
     user = current_user.id
-    profile = User.query.filter_by(id=user).all()
-
-    for p in profile: 
-        email=p.email
-        password=p.password
-        name=p.first_name
-
-    admin = User.query.filter_by(email).first()
-    admin = cemail
+    profile = User.query.filter_by(id=user).first()
+    
+    profile.email = cemail
     db.session.commit()
 
+    profile.name = fname
+    db.session.commit()
     
+        
+        
     flash('Profile updated!', category='success')
-    return redirect(url_for('/profile.html'))
+    return redirect(url_for('views.profile'))
