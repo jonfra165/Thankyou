@@ -100,6 +100,12 @@ def home():
     
     return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
+@views.route("/edit-note")
+@login_required
+def edit_note():
+    '''Add comment'''
+    
+
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
 def profile():
