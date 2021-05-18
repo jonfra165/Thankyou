@@ -32,10 +32,10 @@ def home():
     quote_list = quote_str.split('(')
 
     quote = quote_list[0]
-    if quote_list[1] != '':
-        author = quote_list[1].replace(')', '')
-    else:
+    if len(quote_list) == 1:
         author = 'Anonymous'
+    else:
+        author = quote_list[1].replace(')', '')
 
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
