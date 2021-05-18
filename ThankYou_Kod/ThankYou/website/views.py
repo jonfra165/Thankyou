@@ -32,10 +32,10 @@ def home():
     quote_list = quote_str.split('(')
 
     quote = quote_list[0]
-    if quote_list[1] != '':
-        author = quote_list[1].replace(')', '')
-    else:
+    if len(quote_list) == 1:
         author = 'Anonymous'
+    else:
+        author = quote_list[1].replace(')', '')
 
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).all()
@@ -99,6 +99,12 @@ def home():
         flash('Note added!', category='success')
     
     return render_template('home.html', user=user, note=note, quote=quote, author=author)
+
+@views.route("/edit-note")
+@login_required
+def edit_note():
+    '''Add comment'''
+    
 
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
