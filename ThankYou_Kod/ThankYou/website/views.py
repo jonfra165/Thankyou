@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash, Flask, send_from_directory
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, User
 from . import db
 import requests
 import re
@@ -165,14 +165,34 @@ def calendar_events_by_date(date):
 @views.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
-    form = EditProfileForm()
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.password = form.password.data
-        db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('edit'))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.password.data = current_user.password
-    return render_template('edit.html', title='edit', form=form)
+    user = current_user.id
+    profile = User.query.filter_by(id=user).all()
+
+    for p in profile: 
+        email=p.email
+        password=p.password
+        name=p.first_name
+    
+    return render_template('edit.html', title='edit', email=email, password=password, name=name)
+
+@views.route('/save_edit', methods=['GET', 'POST'])
+@login_required
+def save_edit():
+    cemail = request.form.get('cemail')
+    fname = request.form.get('fname')
+    cpassword = request.form.get('cpassword')
+    user = current_user.id
+    profile = User.query.filter_by(id=user).all()
+
+    for p in profile: 
+        email=p.email
+        password=p.password
+        name=p.first_name
+
+    admin = User.query.filter_by(email).first()
+    admin = cemail
+    db.session.commit()
+
+    
+    flash('Profile updated!', category='success')
+    return redirect(url_for('/profile.html'))

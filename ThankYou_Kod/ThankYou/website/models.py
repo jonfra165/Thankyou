@@ -20,3 +20,6 @@ class User(db.Model, UserMixin): #Table user
 class Test(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
 
+    
+    
+

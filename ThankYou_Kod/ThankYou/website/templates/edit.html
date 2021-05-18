@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Edit profile {% endblock %}
+
+
+{% block content %}
+<h1>Edit Profile</h1>
+
+<form>
+    <label for="cemail">Current email:</label><br>
+    <input type="text" id="cemail" name="cemail" value="{{email}}"><br>
+    <label for="fname">Your first name:</label><br>
+    <input type="text" id="fname" name="fname" value={{name}}><br>
+    <label for="cpassword">Current password:</label><br>
+    <input type="text" id="cpassword" name="cpassword" value={{password}}><br>
+    <input type="submit" value="Update">
+  </form>
+{% endblock %}
