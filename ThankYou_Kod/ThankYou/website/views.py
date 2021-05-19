@@ -7,6 +7,7 @@ import re
 import json
 import os
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
 views = Blueprint('views', __name__)
 
 UPLOAD_FOLDER = 'ThankYou_Kod/ThankYou/website/static/uploads'
@@ -185,11 +186,12 @@ def save_edit():
     profile = User.query.filter_by(id=user).first()
     
     profile.email = cemail
+    profile.first_name = fname
+    profile.password = cpassword
+    profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
     db.session.commit()
 
-    profile.name = fname
-    db.session.commit()
-    
+
         
         
     flash('Profile updated!', category='success')
