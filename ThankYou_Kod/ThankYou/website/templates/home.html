@@ -11,6 +11,10 @@
     <a href='/calendar'>Calendar</a>
     <a href='/logout'>Logout</a>
 </div>
+
+
+
+
 <div id="quote-home">
     <figure class="text-end">
         <blockquote class="blockquote">
@@ -21,6 +25,9 @@
         </figcaption>
     </figure>
 </div>
+
+
+
 <div class="accordion" id="accordionExample">
     <form action="/" method="POST" enctype="multipart/form-data">
         <div class="accordion-item">
@@ -32,10 +39,13 @@
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <label for="note1">Post 1</label><br/>
+                {% if note [0]%}
+                <p>{{note[0]['summary']}}</p>
+                {% else %}
                 <textarea name="note1" id="note1" placeholder="Skriv här…" cols="20" rows="5"></textarea>
-                
                 <label for="filename"></label><br/>
                 <input type="file" id="file1" name="file1"/><br/>
+                {% endif %}
             </div>
         </div>
         </div>
@@ -48,10 +58,13 @@
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <label for="note2">Post 2</label><br/>
+                {% if note [1]%}
+                <p>{{note[1]['summary']}}</p>
+                {% else %}
                 <textarea name="note2" id="note2" placeholder="Skriv här…" cols="20" rows="5"></textarea>
-                
                 <label for="filename"></label><br/>
                 <input type="file" id="file2" name="file2"/><br/>
+                {% endif %}
             </div>
         </div>
         </div>
@@ -64,15 +77,31 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <label for="note3">Post 3</label><br/>
+                {% if note [2]%}
+                <p>{{note[2]['summary']}}</p>
+                {% else %}
                 <textarea name="note3" id="note3" placeholder="Skriv här…" cols="20" rows="5"></textarea>
         
                 <label for="filename"></label><br/>
                 <input type="file" id="file3" name="file3"/><br/>
+                {% endif %}
             </div>
         </div>
         </div>
+        {% if note %}
+        <button type="button">Edit</button>
+        {% else %}
         <input action="/calendar" type=submit value=Upload>
+        {% endif %}
     </form>
     </div>
 </div>
+
+<script>
+    $.ajax({
+    url: "/calendar-events-by-date/"+formatDate(date)
+    }).done(function(data) {
+    const posts = JSON.parse(data);
+    })
+</script>
 {% endblock %}

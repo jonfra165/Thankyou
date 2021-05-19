@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash, Flask, send_from_directory
 from flask_login import login_required, current_user
 from .models import Note
+from datetime import date
 from . import db
 import requests
 import re
@@ -19,14 +20,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
-@views.route('/', methods=['GET', 'POST'])
-@login_required #User can only see the home page if they are logged in
-def home():
-    '''This view returns the home page'''
+def get_quote():
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
     quote_list = quote_str.split('(')
@@ -37,8 +31,31 @@ def home():
     else:
         author = quote_list[1].replace(')', '')
 
+    return quote, author
+
+app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+@views.route('/', methods=['GET', 'POST'])
+@login_required #User can only see the home page if they are logged in
+def home():
+    '''This view returns the home page'''
+    quote, author = get_quote()
+
+    today = date.today()
     user = current_user.id 
-    note = Note.query.filter_by(user_id=user).all()
+    note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
+
+    note_list = []
+    for notes in note:
+        x = {
+            "date": notes.date,
+            "summary": notes.data,
+            "image": notes.image
+        }
+        note_list.append(x)
+        print(note_list)
 
     if request.method == 'POST':
         note1 = request.form.get('note1')
@@ -98,13 +115,7 @@ def home():
         db.session.commit()
         flash('Note added!', category='success')
     
-    return render_template('home.html', user=user, note=note, quote=quote, author=author)
-
-@views.route("/edit-note")
-@login_required
-def edit_note():
-    '''Add comment'''
-    
+    return render_template('home.html', user=user, note=note_list, quote=quote, author=author)
 
 @views.route("/profile")
 @login_required #User can only see the profile page if they are logged in
@@ -161,3 +172,4 @@ def calendar_events_by_date(date):
     y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
     return y
+
