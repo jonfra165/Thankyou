@@ -45,7 +45,6 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         validate = validate_email(email)
-        print(email)
     
         user = User.query.filter_by(email=email).first()
         if user: 

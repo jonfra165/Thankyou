@@ -16,17 +16,104 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 
-        <label for="inputFname" class="sr-only">Name</label>
-        <input type="text" name="fname" id="inputFname" class="form-control" placeholder="First name" required>
-
+        <label for="inputFname" class="sr-only">Username</label>
+        <input type="text" name="fname" id="inputFname" class="form-control" placeholder="Username" required>
+        
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Password" required>
+        
+        <div id="message">
+          <i>Password must contain</i>
+          <i id="letter" class="invalid">a <b>lowercase</b> letter,</i>
+          <i id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</i>
+          <i id="number" class="invalid">a <b>number</b>,</i>
+          <i>a minimum of </i>
+          <i id="length" class="invalid"><b>8 characters</b></i>
+          <i>and</i>
+          <i id="special" class="invalid"><b>1 special character</b></i>
+        </div>
 
-        <label for="inputPassword" class="sr-only">Conrfirm password</label>
-        <input type="password" name="password2" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword" class="sr-only">Confirm password</label>
+        <input type="password" name="password2" id="inputPassword" class="form-control" placeholder="Confirm password" required>
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
       </form>
 </div>
+
+
+
+
+<!--SHOW REQUIREMENTS-->
+<script>
+  var myInput = document.getElementById("inputPassword");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");
+  var special = document.getElementById("special");
+  
+  
+  // When the user clicks on the password field, show the message box
+  myInput.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+  }
+  
+  // When the user clicks outside of the password field, hide the message box
+  myInput.onblur = function() {
+    document.getElementById("message").style.display = "none";
+  }
+  
+  // When the user starts to type something inside the password field
+  myInput.onkeyup = function() {
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if(myInput.value.match(lowerCaseLetters)) {  
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+    
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if(myInput.value.match(upperCaseLetters)) {  
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+  
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(myInput.value.match(numbers)) {  
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if(myInput.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+
+    var special_characters = /[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
+    if(myInput.value.match(special_characters)) {  
+      special.classList.remove("invalid");
+      special.classList.add("valid");
+    } else {
+      special.classList.remove("valid");
+      special.classList.add("invalid");
+    }
+
+  }
+  </script>
 
 {% endblock %}

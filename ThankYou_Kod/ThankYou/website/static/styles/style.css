@@ -43,15 +43,12 @@ body {
     background-color:rgb(245, 243, 243);
     padding: 20px;
   }
-<<<<<<< HEAD
-=======
 
   #log-in .btn-primary {
     color: rgb(82, 78, 78);
     background-color:rgb(245, 243, 243);
     border-color: rgb(238, 231, 231);
   }    
->>>>>>> uploadimages
   .form-signin {
     width: 100%;
     max-width: 330px;
@@ -86,6 +83,45 @@ body {
   #sign-up{
     grid-area: main;
   }
+
+  /*Validate password*/
+
+  #message {
+    display:none;
+    color: #000;
+    position: relative;
+    opacity: 0.5;
+  }
+
+  #message h3 {
+    font-size: 0.875em;
+  }
+  
+  #message i {
+    font-size: 0.875em;
+    display: inline;
+  }
+  
+  /* Add a green text color when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -35px;
+  }
+  
+  /* Add a red text color when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+  }
+  
   /* Navbar UNIVERSAL*/
   .navbar {
     grid-area: header;
@@ -101,16 +137,6 @@ body {
     padding: 14px 16px;
     text-decoration: none;
   }
-<<<<<<< HEAD
-  .navbar a:hover {
-    background-color: blue;
-  }
-  /*PROFILE*/
-  #profile img {
-    width: 100px;
-    height: 100px;
-  }
-=======
   .navbar a.hover {
     color:rgb(245, 235, 235);
   }
@@ -133,9 +159,11 @@ body {
   text-align: center;
   margin-top: 5px;
 }
+
 .grid > #posts > small {
   display: block;
 }
+
   /*Homepage*/
   #quote-home {
     grid-area: main;
@@ -147,4 +175,3 @@ body {
    grid-area: right2;
  }
 
->>>>>>> uploadimages
