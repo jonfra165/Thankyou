@@ -55,18 +55,25 @@ def sign_up():
             flash('This email does not exist', category='error')
         elif len(fname) < 2:
             flash('First name must be greater than 2 characters.', category='error')
+            return render_template("sign_up.html", email=email)
         elif len(password1) < 8:
             flash('Password must be greater than 8 characters.', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         elif not any(p.isupper() for p in password1): # Check if password includes at least one capital letter 
             flash('Password must include at least one capital letter.', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         elif not any(p.isdigit() for p in password1): # Check if password includes at least one number 
             flash('Password must include at least one number.', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         elif not any(char.isupper() for char in password1):
             flash('Password should have at least one uppercase letter', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         elif not any(char.isdigit() for char in password1):
             flash('Password should have at least one numeral', category='error')
+            return render_template("sign_up.html", email=email, fname=fname)
         else: #Insert new user to database
             new_user = User(email=email, first_name=fname, password=generate_password_hash(password1, method='sha256')) #Hash password
             db.session.add(new_user)
