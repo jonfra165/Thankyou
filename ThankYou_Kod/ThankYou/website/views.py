@@ -144,12 +144,13 @@ def calendar_events():
 @login_required
 def calendar_events_by_date(date):
     ''' add comment '''
-    user = current_user.id 
+    user = current_user.id
     note = Note.query.filter_by(user_id=user).filter_by(date=date).all()
     
     note_list = []
     for notes in note:
         x = {
+            "id": notes.id,
             "startDate": notes.date,
             "endDate": notes.date,
             "summary": notes.data,
@@ -161,3 +162,20 @@ def calendar_events_by_date(date):
     y = json.dumps(note_list, indent=4, sort_keys=True, default=str) # The result is a JSON string:
 
     return y
+
+@views.route("/delete/<id>")
+@login_required
+def delete(id):
+    ''' Delete post from database '''
+
+    user = current_user.id
+    note = Note.query.filter_by(user_id=user).filter_by(id=id).first()
+
+    if note:
+        db.session.delete(note)
+        db.session.commit()
+        flash('Note successfully removed', category='success')
+    else:
+        flash("Note could not be removed, please try again", category='error')
+
+    return redirect(url_for("views.calendar"))
