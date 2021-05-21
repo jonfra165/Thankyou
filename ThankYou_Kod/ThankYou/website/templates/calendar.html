@@ -21,6 +21,27 @@
   <a href='/logout'>Logout</a>
 </div>
 
+<!-- Error messages -->
+<div class="mt-2">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  
+  {% if messages %}
+      {% for category, message in messages %}
+          {% if category == 'error' %}
+          <div class="alert alert-danger" role="alert">
+              {{message}}
+          </div>
+          {% else %}
+          <div class="alert alert-success" role="alert">
+          {{message}}
+          </div>
+          {% endif %}
+      {% endfor %}
+  {% endif %}
+  
+  {% endwith %}
+  </div>
+
 <div class="grid">
   <div id="posts">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
