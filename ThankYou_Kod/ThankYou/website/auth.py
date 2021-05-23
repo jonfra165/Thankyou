@@ -27,7 +27,7 @@ def login():
         else: #If email doesn't have a row in the table then it does not exist
             flash('Email doesn\’t  exist!', category='error')
 
-    return render_template('login.html')  
+    return render_template('login.html', user=current_user)  
             
 @auth.route('/logout')
 @login_required #Requires that user is logged in to be able to log out
@@ -77,4 +77,4 @@ def sign_up():
 
             return redirect(url_for('views.home')) #Redirect to login page
             
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=current_user)
