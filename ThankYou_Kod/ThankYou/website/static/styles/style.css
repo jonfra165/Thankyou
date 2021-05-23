@@ -35,18 +35,3 @@ body {
     margin-bottom: 0px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px;
-  }
-  
-  .grid > #posts {
-    background-color:rgb(245, 243, 243);
-    padding: 20px;
-    text-align: center;
-    margin-top: 5px;
-  }
-  .grid > #posts > small {
-    display: block;
-  }
