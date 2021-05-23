@@ -1,17 +1,15 @@
 body {
     background: linear-gradient(165deg, #f7f5fb 50%, #fff 50%) no-repeat;
-
 }
 
-.home.mt-4 {
-    margin-top: 150px !important;
+.home {
+    margin-top: 150px;
 }
 
 .navbar {
     background-color: #ffffff !important;
     box-shadow: 0 2px 4px 2px rgba(0,0,0,0.25);
 }
-
 
 #file1, #file2, #file3 {
     display: block;
@@ -22,10 +20,14 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #bea9e9;
-    color: #ffffff;
+    background-color: white;
+    color: grey;
     text-align: center;
     box-shadow: 0px -2px 7px 0px rgba(145,145,145,0.73);
+}
+
+.footer p {
+    margin-bottom: 0px;
 }
 
 .grid {
