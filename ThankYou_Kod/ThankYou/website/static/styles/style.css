@@ -1,19 +1,23 @@
 body {
-    background: linear-gradient(165deg, #f7f5fb 50%, #fff 50%) no-repeat;
+    background: linear-gradient(165deg, #ffe9e6 50%, #fff 50%) no-repeat;
 }
 
 .home {
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .navbar {
     background-color: #ffffff !important;
-    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 60px 2px rgba(0,0,0,0.25);
 }
 
 #navlogo {
     height: 50px;
     padding-right: 10px;
+}
+
+.ps-3 {
+    padding-left: 0px !important;
 }
 
 #file1, #file2, #file3 {
@@ -28,7 +32,6 @@ body {
     background-color: white;
     color: grey;
     text-align: center;
-    box-shadow: 0px -2px 7px 0px rgba(145,145,145,0.73);
 }
 
 .footer p {
