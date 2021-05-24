@@ -188,28 +188,8 @@ def save_edit():
     profile.email = cemail
     profile.first_name = fname
     profile.password = cpassword
+    cpassword2 = cpassword
     profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
-    if user: 
-            flash('Email already exists!', category='error')
-        elif len(email) < 4:
-            flash('Email must be greater than 4 characters.', category='error')
-        elif validate == False: 
-            flash('This email does not exist', category='error')
-        elif len(fname) < 2:
-            flash('First name must be greater than 2 characters.', category='error')
-        elif len(password1) < 8:
-            flash('Password must be greater than 8 characters.', category='error')
-        elif not any(p.isupper() for p in password1): # Check if password includes at least one capital letter 
-            flash('Password must include at least one capital letter.', category='error')
-        elif not any(p.isdigit() for p in password1): # Check if password includes at least one number 
-            flash('Password must include at least one number.', category='error')
-        elif password1 != password2:
-            flash('Passwords don\'t match', category='error')
-        elif not any(char.isupper() for char in password1):
-            flash('Password should have at least one uppercase letter', category='error')
-        elif not any(char.isdigit() for char in password1):
-            flash('Password should have at least one numeral', category='error')
-        else: #Insert new user to database
     db.session.commit()
 
 
