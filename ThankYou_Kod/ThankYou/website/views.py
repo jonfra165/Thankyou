@@ -96,7 +96,7 @@ def home():
         if new_note3 != '' : db.session.add(new_note3)
         db.session.commit()
     
-    return render_template('home.html', user=user, note=note, quote=quote, author=author)
+    return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
 
 @views.route("/edit-note")
 @login_required
@@ -114,7 +114,7 @@ def profile():
 @views.route("/calendar")
 @login_required
 def calendar():
-    return render_template("calendar.html")
+    return render_template("calendar.html", user=current_user)
 
 @views.route("/calendar-events")
 @login_required
