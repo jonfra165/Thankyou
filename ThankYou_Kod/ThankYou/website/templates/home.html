@@ -18,10 +18,57 @@
                 </figcaption>
             </figure>
         </div>
-
-        <div class="col-sm-6">
+        
+        <div id="second">
+            {% if note [0]%}
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    {% if note [0]['image'] %}
+                    <img src="{{note[0]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    {% else %}
+                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    {% endif %}
+                    <p>{{note[0]['summary']}}</p>
+                </div>
+                {% if note[1] %}
+                <div class="carousel-item">
+                    {% if note [1]['image'] %}
+                    <img src="{{note[1]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    {% else %}
+                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    {% endif %}
+                    <p>{{note[1]['summary']}}</p>
+                </div>
+                {% endif %}
+                {% if note[2] %}
+                <div class="carousel-item">
+                    {% if note [2]['image'] %}
+                    <img src="{{note[2]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    {% else %}
+                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    {% endif %}
+                    <p>{{note[2]['summary']}}</p>
+                </div>
+                {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            {% else %}  
             <div class="accordion" id="accordionExample">
-                <form id="postform" action="/" method="POST" enctype="multipart/form-data">
+                <form action="/" method="POST" id="test1" enctype="multipart/form-data">
                     <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -30,10 +77,11 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <label for="note1">Post 1</label><br/>
                             <textarea name="note1" id="note1" placeholder="Skriv här…" cols="20" rows="5"></textarea>
                             
-                            <label for="filename"></label>
-                            <input type="file" id="file1" name="file1"/>
+                            <label for="filename"></label><br/>
+                            <input type="file" id="file1" name="file1"/><br/>
                         </div>
                     </div>
                     </div>
@@ -45,10 +93,11 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <label for="note2">Post 2</label><br/>
                             <textarea name="note2" id="note2" placeholder="Skriv här…" cols="20" rows="5"></textarea>
                             
                             <label for="filename"></label><br/>
-                            <input type="file" id="file2" name="file2"/>
+                            <input type="file" id="file2" name="file2"/><br/>
                         </div>
                     </div>
                     </div>
@@ -60,16 +109,18 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <label for="note3">Post 3</label><br/>
                             <textarea name="note3" id="note3" placeholder="Skriv här…" cols="20" rows="5"></textarea>
                     
-                            <label for="filename"></label>
-                            <input type="file" id="file3" name="file3"/>
+                            <label for="filename"></label><br/>
+                            <input type="file" id="file3" name="file3"/><br/>
                         </div>
                     </div>
-                    </div>
-                    <input action="/calendar" type=submit value=Upload>
                 </form>
-            </div>
+                <input type=submit value=Upload>
+                </div>  
+            </div> 
+            {% endif %}
         </div>
     </div>
 </div>

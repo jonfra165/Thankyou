@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, url_for, redirect, request, flash,
 from flask_login import login_required, current_user
 from .models import Note, User
 from . import db
+from datetime import date
 import requests
 import re
 import json
@@ -38,8 +39,9 @@ def home():
     else:
         author = quote_list[1].replace(')', '')
 
+    today = date.today()
     user = current_user.id 
-    note = Note.query.filter_by(user_id=user).all()
+    note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
 
     if request.method == 'POST':
         note1 = request.form.get('note1')
