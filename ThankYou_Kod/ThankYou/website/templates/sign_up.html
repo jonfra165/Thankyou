@@ -4,10 +4,7 @@
 
 {% block content %}
 
-<h1>This is the sign up page</h1>  
-<div id="log-in-background">
-
-</div>
+<!--
 <div id="sign-up">
     <form id="log-in" class="form-signin" method="POST">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -27,6 +24,42 @@
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
       </form>
+</div>
+-->
+
+
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5" id="signupcon">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" method="POST">
+        <div class="form-floating mb-3">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Confirm password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        <hr class="my-4">
+        <small class="text-muted">Already have an account? Go to <a href="/login" class="link-dark ps-3">log in</a></small>
+      </form>
+    </div>
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">You're only a few clicks away from happiness!</h1>
+      <p class="col-lg-10 fs-4">We have a strong belief that expressing your gratitude will make you happier. Therefore we created ThankYou - your own digital gratitude journal. So, what are you waiting for?</p>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

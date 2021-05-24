@@ -64,7 +64,6 @@ def home():
             elif note1 != '' :
                 new_note1 = Note(data=note1, user_id=current_user.id)
         else:
-            flash('Please add eather a Note or an Image to post 1!', category='error')
             return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
         new_note2 = ''
@@ -96,7 +95,6 @@ def home():
         if new_note2 != '' : db.session.add(new_note2)
         if new_note3 != '' : db.session.add(new_note3)
         db.session.commit()
-        flash('Note added!', category='success')
     
     return render_template('home.html', user=user, note=note, quote=quote, author=author)
 
