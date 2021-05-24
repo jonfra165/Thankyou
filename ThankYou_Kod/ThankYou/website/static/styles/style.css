@@ -51,3 +51,41 @@ body {
 #log-in-background {
     background-color: blue;
 }
+
+/*Validate password in SIGN-UP*/
+
+#message {
+  display:none;
+  color: #000;
+  position: relative;
+  opacity: 0.5;
+}
+
+#message h3 {
+  font-size: 0.875em;
+}
+
+#message i {
+  font-size: 0.875em;
+  display: inline;
+}
+
+/* Add a green text color when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+}
