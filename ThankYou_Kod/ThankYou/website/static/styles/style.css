@@ -6,6 +6,8 @@ body {
     margin-top: 100px;
 }
 
+/*NAVIGATION*/
+
 .navbar {
     background-color: #ffffff !important;
     box-shadow: 0 1px 60px 2px rgba(0,0,0,0.25);
@@ -24,6 +26,8 @@ body {
     display: block;
 }
 
+/*FOOTER*/
+
 .footer {
     position: fixed;
     left: 0;
@@ -38,18 +42,12 @@ body {
     margin-bottom: 0px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px;
-  }
-  
-  .grid > #posts {
-    background-color:rgb(245, 243, 243);
-    padding: 20px;
-    text-align: center;
-    margin-top: 5px;
-  }
-  .grid > #posts > small {
-    display: block;
-  }
+/*LOGIN*/
+
+.login-container {
+    height: 100px;
+}
+
+#log-in-background {
+    background-color: blue;
+}

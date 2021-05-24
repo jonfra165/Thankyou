@@ -12,6 +12,7 @@
 
 
     <body>
+        {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="Third navbar example">
             <div class="container">
               <a class="navbar-brand" href="/"><img id="navlogo" src="../static/styles/logo_svg.svg" alt="heartlogo"></a>
@@ -28,7 +29,7 @@
                             <a class="nav-link" href="/calendar">Journal</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown03">
                                 <li><a class="dropdown-item" href="/profile">Settings</a></li>
                                 <li><a class="dropdown-item" href="/logout">Log out</a></li>
@@ -38,12 +39,18 @@
                 </div>
             </div>
         </nav> 
+        {% else %} 
+        {% endif %}
+
+
+        
         <main class="main justify-content-center mt-4">
             <!-- Empty container -->
             {% block content %}
 
             {% endblock %}
         </main>
+
         <footer class="footer mt-auto py-3">
             <div class="container" id="footdiv">
               <p>Här ska vår footer vara!</p>
