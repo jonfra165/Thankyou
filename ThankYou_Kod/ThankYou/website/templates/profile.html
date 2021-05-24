@@ -7,7 +7,9 @@
     
     <img src="https://iconape.com/wp-content/png_logo_vector/user-circle.png" alt="User Image">
 
-    <p>Name: {{ user.first_name }}</p>
-    <p>Email: {{ user.email }}</p>
+    <h2>Name: {{ user.first_name }}</h2>
+    <h2>Email: {{ user.email }}</h2>
+    <button onclick="window.location.href='/edit'">Edit profile</button>
+    
 </div>
 {% endblock %}

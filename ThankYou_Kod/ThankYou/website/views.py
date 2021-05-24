@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash, Flask, send_from_directory
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, User
 from . import db
 import requests
 import re
 import json
 import os
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
 views = Blueprint('views', __name__)
 
 UPLOAD_FOLDER = 'ThankYou_Kod/ThankYou/website/static/uploads'
@@ -177,3 +178,36 @@ def delete(id):
         flash("Note could not be removed, please try again", category='error')
 
     return redirect(url_for("views.calendar"))
+@views.route('/edit', methods=['GET', 'POST'])
+@login_required
+def edit():
+    user = current_user.id
+    profile = User.query.filter_by(id=user).all()
+
+    for p in profile: 
+        email=p.email
+        password=p.password
+        name=p.first_name
+    
+    return render_template('edit.html', title='edit', email=email, password=password, name=name)
+
+@views.route('/save_edit', methods=['GET', 'POST'])
+@login_required
+def save_edit():
+    cemail = request.form.get('cemail')
+    fname = request.form.get('fname')
+    cpassword = request.form.get('cpassword')
+    user = current_user.id
+    profile = User.query.filter_by(id=user).first()
+    
+    profile.email = cemail
+    profile.first_name = fname
+    profile.password = cpassword
+    profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
+    db.session.commit()
+
+
+        
+        
+    flash('Profile updated!', category='success')
+    return redirect(url_for('views.profile'))
