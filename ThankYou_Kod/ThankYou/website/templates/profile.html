@@ -2,11 +2,7 @@
 
 {% block content %}
 
-<div id="profile">
-    <h1>Profile</h1>
-    
-    <img src="https://iconape.com/wp-content/png_logo_vector/user-circle.png" alt="User Image">
-
+<div id="profile">    
     <h2>Name: {{ user.first_name }}</h2>
     <h2>Email: {{ user.email }}</h2>
     <button onclick="window.location.href='/edit'">Edit profile</button>

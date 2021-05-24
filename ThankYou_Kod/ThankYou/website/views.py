@@ -178,6 +178,7 @@ def delete(id):
         flash("Note could not be removed, please try again", category='error')
 
     return redirect(url_for("views.calendar"))
+
 @views.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
@@ -189,7 +190,7 @@ def edit():
         password=p.password
         name=p.first_name
     
-    return render_template('edit.html', title='edit', email=email, password=password, name=name)
+    return render_template('edit.html', title='edit', email=email, password=password, name=name, user=current_user)
 
 @views.route('/save_edit', methods=['GET', 'POST'])
 @login_required
