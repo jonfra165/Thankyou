@@ -26,6 +26,10 @@ body {
     display: block;
 }
 
+.float-button {
+  float: right;
+}
+
 /*FOOTER*/
 
 .footer {
@@ -55,10 +59,11 @@ body {
 /*Validate password in SIGN-UP*/
 
 #message {
-  display:none;
+  display: none;
   color: #000;
   position: relative;
   opacity: 0.5;
+  padding-bottom: 15px;
 }
 
 #message h3 {
