@@ -107,3 +107,15 @@ body {
   background-color: #ff5cad;
   border: #ced4da;
 }
+
+@media screen and (max-width: 1200px) {
+  .changeprofile {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .changeprofile {
+    width: 50%;
+  }
+}
