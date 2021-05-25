@@ -90,3 +90,20 @@ body {
   position: relative;
   left: -35px;
 }
+
+/*PROFILE*/
+
+.changeprofile {
+  width: 30%;
+  margin: auto;
+}
+
+.profile-button {
+  background-color: #fc8cc4;
+  border: #ced4da;
+}
+
+.profile-button:hover {
+  background-color: #ff5cad;
+  border: #ced4da;
+}

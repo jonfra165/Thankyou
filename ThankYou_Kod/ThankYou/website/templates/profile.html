@@ -3,10 +3,18 @@
 
 {% block content %}
 
-<div id="profile">    
-    <h2>Name: {{ user.first_name }}</h2>
-    <h2>Email: {{ user.email }}</h2>
-    <button onclick="window.location.href='/edit'">Edit profile</button>
-    
+<div class="container mt-5 changeprofile">
+    <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" action="/edit" method="POST">
+      <div class="form-floating mb-3">
+        <input type="text" readonly name="email" class="form-control" id="floatingInput" value="{{ user.first_name }}">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" readonly name="fname" class="form-control" id="floatingInput" value="{{ user.email }}">
+        <label for="floatingInput">Email adress</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary profile-button">Change profile settings</button>
+    </form>
 </div>
+
 {% endblock %}
