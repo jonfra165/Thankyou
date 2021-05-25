@@ -12,6 +12,7 @@
 
 
     <body>
+        {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="Third navbar example">
             <div class="container">
               <a class="navbar-brand" href="/"><img id="navlogo" src="../static/styles/logo_svg.svg" alt="heartlogo"></a>
@@ -54,6 +55,9 @@
                 </div>
             </div>
         </nav> 
+        {% else %}
+        {% endif %}
+
         <main class="main justify-content-center mt-4">
             <!-- Empty container -->
             {% block content %}

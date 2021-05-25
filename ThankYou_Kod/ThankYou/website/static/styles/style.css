@@ -16,6 +16,32 @@ body {
     padding-right: 10px;
 }
 
+.primarybutton {
+    margin-bottom: 10px;
+    background-color: #fc8cc4;
+    border: #ced4da;
+}
+
+.primarybutton:hover {
+    background-color: #ff5cad;
+    border: #ced4da;
+}
+
+.secondarybutton {
+    color: #fecfc7;
+    background-color: #f8f9fa;
+    border-color: #fecfc7;
+    font-size: 14px;
+}
+
+.secondarybutton:hover {
+    background-color: #ffb3a6;
+    color: white;
+    border: #ced4da;
+    font-size: 14px;
+}
+
+
 .ps-3 {
     padding-left: 0px !important;
 }
