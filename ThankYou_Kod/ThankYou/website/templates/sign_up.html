@@ -4,40 +4,6 @@
 
 {% block content %}
 
-<!--
-<div id="sign-up">
-    <form id="log-in" class="form-signin" method="POST">
-<div class="container">
-  <div class="row">
-    <div id="log-in-background" class="col-sm-8"></div>
-
-    <div id="sign-up" class="col">
-      <form id="log-in" class="form-signin" method="POST">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
-
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-
-        <label for="inputFname" class="sr-only">Name</label>
-        <input type="text" name="fname" id="inputFname" class="form-control" placeholder="First name" required>
-
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Password" required>
-
-        <label for="inputPassword" class="sr-only">Conrfirm password</label>
-        <input type="password" name="password2" id="inputPassword" class="form-control" placeholder="Password" required>
-          
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-      </form>
-    </div>
-  </div>
-</div>
--->
-
-
-
-
 <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="signupcon">
   <div class="row align-items-center g-lg-5 py-5">
     <div class="col-md-10 mx-auto col-lg-5">
@@ -71,9 +37,9 @@
           <input type="password" name="password2" class="form-control" id="inputPassword" placeholder="Confirm Password">
           <label for="inputPassword">Confirm password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        <button class="w-100 btn btn-lg btn-primary primarybutton" type="submit">Sign up here!</button>
         <hr class="my-4">
-        <small class="text-muted">Already have an account? Go to <a href="/login" class="link-dark ps-3">log in</a></small>
+        <button class="w-100 btn btn-lg btn-primary secondarybutton" formaction="/login">Go back to login</button>
       </form>
     </div>
     <div class="col-lg-7 text-center text-lg-start">

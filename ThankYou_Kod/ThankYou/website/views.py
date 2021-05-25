@@ -67,7 +67,7 @@ def home():
             elif note1 != '' :
                 new_note1 = Note(data=note1, user_id=current_user.id)
         else:
-            return render_template('home.html', user=user, note=note, quote=quote, author=author)
+            return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
 
         new_note2 = ''
         if note2 != '' or file2.filename != '' :

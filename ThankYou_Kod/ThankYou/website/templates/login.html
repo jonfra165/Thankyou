@@ -6,9 +6,9 @@
 
 <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="logincon">
   <div class="row align-items-center g-lg-5 py-5">
-    <div class="col-lg-7 text-center text-lg-start">
-      <h1 class="display-4 fw-bold lh-1 mb-3">Welcome back to ThankYou</h1>
-      <p class="col-lg-10 fs-4">We have a strong belief that expressing your gratitude will make you happier. Therefore we created ThankYou - your own digital gratitude journal. So, what are you waiting for?</p>
+    <div class="col-lg-7 text-center text-lg-start textstart">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to ThankYou</h1>
+      <p class="col-lg-10 fs-4">We have a strong belief that expressing your gratitude will make you happier. Therefore we created ThankYou, your own digital gratitude journal, to help you out. So, what are you waiting for?</p>
     </div>
     <div class="col-md-10 mx-auto col-lg-5">
       <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" method="POST">
@@ -20,9 +20,11 @@
           <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+        <button class="w-100 btn btn-lg btn-primary primarybutton" type="submit">Log in</button>
         <hr class="my-4">
-        <small class="text-muted">No account? Sign up <a href="/sign-up" class="link-dark ps-3">here!</a></small>
+        <a href="/signup">
+          <button class="w-100 btn btn-lg btn-primary secondarybutton" formaction="/sign-up">No account? Sign up here!</button>
+        </a>
       </form>
     </div>
   </div>
