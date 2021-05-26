@@ -40,58 +40,34 @@
         <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" class="password-center">Change password</a>
       </p>
       
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    
-                    {% if category == 'error' %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% else %}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
-
-            <div class="modal-header">
-              <h5 class="modal-title display-6" id="exampleModalLabel">Change your password</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="form-floating mb-3">
-                <input type="password" name="cpassword" class="form-control" id="inputPassword" placeholder="enter your new password">
-                <label for="cpassword">Current password</label>
-              </div>
+      <button class="w-100 btn btn-lg btn-primary profile-button">Save profile settings</button>
+    </form>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title display-6" id="exampleModalLabel">Change your password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/save_passsword" method="POST">
               <div class="form-floating mb-3">
                 <input type="password" name="new_password" class="form-control" id="inputPassword" placeholder="enter your new password">
-                <label for="npassword">New password</label>
+                <label for="new_password">New password</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="password" name="confirm_password" class="form-control" id="inputPassword" placeholder="enter your new password">
-                <label for="npassword">Confirm new password</label>
+                <label for="confirm_password">Confirm new password</label>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary profile-button" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary profile-button">Save changes</button>
-            </div>
+                <button class="btn btn-secondary profile-button" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary profile-button">Save changes</button>
+          </form>
           </div>
         </div>
       </div>
-
-      <button class="w-100 btn btn-lg btn-primary profile-button">Save profile settings</button>
-    </form>
+    </div>
 
     
 </div>

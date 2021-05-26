@@ -64,8 +64,8 @@ def sign_up():
             flash('Password must include at least one number.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
-        elif not any(char.isupper() for char in password1):
-            flash('Password should have at least one uppercase letter', category='error')
+        elif not any(char.islower() for char in password1):
+            flash('Password should have at least one lower letter', category='error')
         elif not any(char.isdigit() for char in password1):
             flash('Password should have at least one numeral', category='error')
         else: #Insert new user to database
@@ -73,7 +73,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True) #Remembers that user is logged in
-            flash('Account created', category='sucess')
+            flash('Account created', category='success')
 
             return redirect(url_for('views.home')) #Redirect to login page
             
