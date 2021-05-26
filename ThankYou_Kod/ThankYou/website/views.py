@@ -9,7 +9,6 @@ import json
 import os
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
-from validate_email import validate_email
 
 views = Blueprint('views', __name__)
 
@@ -200,14 +199,11 @@ def profile():
 def save_edit():
     cemail = request.form.get('cemail')
     fname = request.form.get('fname')
-    cpassword = request.form.get('cpassword')
-
-    validate = validate_email(cemail)
 
     user = current_user.id
     profile = User.query.filter_by(id=user).first()
     
-    try: 
+    try:
         if len(cemail) < 4:
             flash('Email must be greater than 4 characters.', category='profile-error')
         elif validate == False: 
@@ -238,6 +234,44 @@ def save_edit():
                 db.session.commit()
                 flash('Profile updated!', category='profile-success')
     except:
-        flash('This account already exists in Thank You', category='error')
-    
+        flash('This account already exists in Thank You!', category='error')
+
+
     return redirect(url_for('views.profile'))
+
+
+@views.route('/save_passsword', methods=['GET', 'POST'])
+@login_required
+def password():
+    new_password = request.form.get('new_password')
+    confirm_password = request.form.get('confirm_password')
+
+    user = current_user.id
+    profile = User.query.filter_by(id=user).first()
+
+    if new_password == '':
+        flash('Fill in all the fields', category='error')
+    elif confirm_password == '':
+        flash('Fill in all the fields', category='error')
+    elif new_password != confirm_password:
+        flash('Passwords don\'t match', category='error')
+    elif new_password != '':
+        if len(new_password) < 8:
+            flash('Password must be greater than 8 characters.', category='error')
+        elif not any(p.isupper() for p in new_password): # Check if password includes at least one capital letter 
+            flash('Password must include at least one capital letter.', category='error')
+        elif not any(p.isdigit() for p in new_password): # Check if password includes at least one number 
+            flash('Password must include at least one number.', category='error')
+        elif not any(char.islower() for char in new_password):
+            flash('Password should have at least one lowercase letter', category='error')
+        elif not any(char.isdigit() for char in new_password):
+            flash('Password should have at least one numeral', category='error')
+        else:
+            profile.password = generate_password_hash(new_password, method='sha256')#Hash password
+            db.session.commit()
+            flash('Profile updated!', category='success')
+    else:
+        pass
+
+    return redirect(url_for('views.profile'))
+
