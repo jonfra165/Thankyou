@@ -3,44 +3,52 @@
 
 {% block content %}
 
-<div class="container mt-5 changeprofile">
-    <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" action="/save_edit" method="POST">
-      <img class="img-fluid profile-heart" src="../static/styles/heart_logo.svg" alt="heartlogo">
-      <figure class="text-center">
-        <h1 class="display-6">Edit your profile</h1>
-      </figure>
-      {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    
-                    {% if category == 'profile-error' %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% elif  category == 'profile-success' %}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
-      <div class="form-floating mb-3">
-        <input type="text" name="fname" class="form-control" id="inputFname" value="{{ user.first_name }}">
-        <label for="fname">Edit username</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="email" name="cemail" class="form-control" id="email" value="{{ user.email }}">
-        <label for="cemail">Edit email adress</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="password" name="cpassword" class="form-control" id="inputPassword" placeholder="enter your new password">
-        <label for="cpassword">New password</label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary profile-button">Save profile settings</button>
-    </form>
-</div>
+<div class="container-fluid mt-5 changeprofile">
+  <div class="row justify-content-center">
+    <div class="col col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
+      <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" action="/save_edit" method="POST">
+        <img class="img-fluid profile-heart" src="../static/styles/heart_logo.svg" alt="heartlogo">
+        <figure class="text-center">
+          <h1 class="display-6">Edit your profile</h1>
+        </figure>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  {% for category, message in messages %}
+                      
+                      {% if category == 'profile-error' %}
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          {{message}}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      {% elif  category == 'profile-success' %}
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          {{message}}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      {% endif %}
+                  {% endfor %}
+              {% endif %}
+              {% endwith %}
+        <div class="form-floating mb-3">
+          <input type="text" name="fname" class="form-control" id="inputFname" value="{{ user.first_name }}">
+          <label for="fname">Edit username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" name="cemail" class="form-control" id="email" value="{{ user.email }}">
+          <label for="cemail">Edit email adress</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" name="cpassword" class="form-control" id="inputPassword" placeholder="enter your new password">
+          <label for="cpassword">New password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary profile-button">Save profile settings</button>
+      </form>
+  </div>
+    </div>
+  </div>
+
+  
+
+
 
 {% endblock %}
