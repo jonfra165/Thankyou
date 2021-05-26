@@ -199,6 +199,8 @@ def profile():
 def save_edit():
     cemail = request.form.get('cemail')
     fname = request.form.get('fname')
+    cpassword = request.form.get('cpassword')
+
 
     user = current_user.id
     profile = User.query.filter_by(id=user).first()
