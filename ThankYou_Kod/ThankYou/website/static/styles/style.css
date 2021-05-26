@@ -18,6 +18,32 @@ body {
     padding-right: 10px;
 }
 
+.primarybutton {
+    margin-bottom: 10px;
+    background-color: #fc8cc4;
+    border: #ced4da;
+}
+
+.primarybutton:hover {
+    background-color: #ff5cad;
+    border: #ced4da;
+}
+
+.secondarybutton {
+    color: #fecfc7;
+    background-color: #f8f9fa;
+    border-color: #fecfc7;
+    font-size: 14px;
+}
+
+.secondarybutton:hover {
+    background-color: #ffb3a6;
+    color: white;
+    border: #ced4da;
+    font-size: 14px;
+}
+
+
 .ps-3 {
     padding-left: 0px !important;
 }
@@ -55,10 +81,11 @@ body {
 /*Validate password in SIGN-UP*/
 
 #message {
-  display:none;
+  display: none;
   color: #000;
   position: relative;
   opacity: 0.5;
+  padding-bottom: 15px;
 }
 
 #message h3 {
@@ -88,4 +115,60 @@ body {
 .invalid:before {
   position: relative;
   left: -35px;
+}
+
+/*PROFILE*/
+
+.changeprofile {
+  width: 30%;
+  margin: auto;
+}
+
+.profile-button {
+  background-color: #fc8cc4;
+  border: #ced4da;
+}
+
+.profile-button:hover {
+  background-color: #ff5cad;
+  border: #ced4da;
+}
+
+.profile-heart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+@media screen and (max-width: 1200px) {
+  .changeprofile {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .changeprofile {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .changeprofile {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .changeprofile {
+    width: 80%;
+  }
+}
+
+/*HOME*/
+
+.home-image {
+  object-fit:cover;
+  width: 500px;
+  height: 300px;
 }

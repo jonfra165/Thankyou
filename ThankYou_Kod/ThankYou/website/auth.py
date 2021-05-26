@@ -64,8 +64,8 @@ def sign_up():
             flash('Password must include at least one number.', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
-        elif not any(char.isupper() for char in password1):
-            flash('Password should have at least one uppercase letter', category='error')
+        elif not any(char.islower() for char in password1):
+            flash('Password should have at least one lowercase letter', category='error')
         elif not any(char.isdigit() for char in password1):
             flash('Password should have at least one numeral', category='error')
         else: #Insert new user to database
