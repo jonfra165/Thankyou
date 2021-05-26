@@ -9,6 +9,8 @@ import json
 import os
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
+from validate_email import validate_email
+
 views = Blueprint('views', __name__)
 
 UPLOAD_FOLDER = 'ThankYou_Kod/ThankYou/website/static/uploads'
@@ -25,7 +27,7 @@ app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
-@views.route('/', methods=['GET', 'POST'])
+@views.route('/', methods=['GET'])
 @login_required #User can only see the home page if they are logged in
 def home():
     '''This view returns the home page'''
@@ -42,7 +44,20 @@ def home():
     today = date.today()
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
+    note_list = []
+    for notes in note:
+        x = {
+            "summary": notes.data if notes.data != None else "",
+            "image": notes.image
+        }
+        note_list.append(x)
 
+    return render_template('home.html', user=current_user, note=note_list, quote=quote, author=author)
+
+@views.route('/send', methods=['POST'])
+@login_required #User can only see the home page if they are logged in
+def send_form():
+    
     if request.method == 'POST':
         note1 = request.form.get('note1')
         note2 = request.form.get('note2')
@@ -67,7 +82,7 @@ def home():
             elif note1 != '' :
                 new_note1 = Note(data=note1, user_id=current_user.id)
         else:
-            return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
+            return render_template('home.html', user=current_user)
 
         new_note2 = ''
         if note2 != '' or file2.filename != '' :
@@ -98,8 +113,8 @@ def home():
         if new_note2 != '' : db.session.add(new_note2)
         if new_note3 != '' : db.session.add(new_note3)
         db.session.commit()
-    
-    return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
+
+        return redirect("/")
 
 @views.route("/edit-note")
 @login_required
@@ -180,34 +195,52 @@ def profile():
     user = current_user
     return render_template("profile.html", user=user)
 
-
-@views.route('/edit', methods=['GET', 'POST'])
-@login_required
-def edit():
-    user = current_user.id
-    profile = User.query.filter_by(id=user).all()
-
-    for p in profile: 
-        email=p.email
-        password=p.password
-        name=p.first_name
-    
-    return render_template('edit.html', title='edit', email=email, password=password, name=name, user=current_user)
-
 @views.route('/save_edit', methods=['GET', 'POST'])
 @login_required
 def save_edit():
     cemail = request.form.get('cemail')
     fname = request.form.get('fname')
     cpassword = request.form.get('cpassword')
+
+    validate = validate_email(cemail)
+
     user = current_user.id
     profile = User.query.filter_by(id=user).first()
     
-    profile.email = cemail
-    profile.first_name = fname
-    profile.password = cpassword
-    profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
-    db.session.commit()
+    try:
+        if len(cemail) < 4:
+            flash('Email must be greater than 4 characters.', category='profile-error')
+        elif validate == False: 
+            flash('This email does not exist', category='profile-error')
+        elif len(fname) < 2:
+            flash('First name must be greater than 2 characters.', category='profile-error')
+        elif cpassword == '':
+            profile.email = cemail
+            profile.first_name = fname
+            profile.password = profile.password
+            db.session.commit()
+            flash('Profile updated!', category='profile-success')
+        elif cpassword != '':
+            if len(cpassword) < 8:
+                flash('Password must be greater than 8 characters.', category='profile-error')
+            elif not any(p.isupper() for p in cpassword): # Check if password includes at least one capital letter 
+                flash('Password must include at least one capital letter.', category='profile-error')
+            elif not any(p.isdigit() for p in cpassword): # Check if password includes at least one number 
+                flash('Password must include at least one number.', category='profile-error')
+            elif not any(char.islower() for char in cpassword):
+                flash('Password should have at least one lowercase letter', category='profile-error')
+            elif not any(char.isdigit() for char in cpassword):
+                flash('Password should have at least one numeral', category='profile-error')
+            else:
+                profile.email = cemail
+                profile.first_name = fname
+                profile.password = generate_password_hash(cpassword, method='sha256')#Hash password
+                db.session.commit()
+                flash('Profile updated!', category='profile-success')
+    except:
+        flash('This account already exists in Thank You!', category='error')
 
-    flash('Profile updated!', category='success')
+
     return redirect(url_for('views.profile'))
+
+

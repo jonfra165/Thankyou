@@ -4,6 +4,7 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="logincon">
     <div class="col-lg-7 text-center text-lg-start">
         <figure class="text-end">
@@ -20,39 +21,60 @@
       <div class="col-md-10 mx-auto col-lg-5">
         <div class="p-4 p-md-5 border rounded-3 bg-light">
             {% if note [0]%}
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
+            <div id="carouselExampleIndicators" class="carousel slide hide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                 <div class="carousel-item active">
-                    {% if note [0]['image'] %}
-                    <img src="{{note[0]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    {% if note [0]['image'] and not note[0]['summary'] == "" %}
+                    <img src="{{note[0]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                    <div class="carousel-caption">
+                        <p>{{note[0]['summary']}}</p>
+                    </div>
+                    {% elif note[0]['image']%}
+                    <img src="{{note[0]['image']}}" class="d-block home-image" alt="Thankfulpost1">
                     {% else %}
                     <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>{{note[0]['summary']}}</p>
+                    </div>
+                    <script>
+                        $(document).ready(function(){
+                            $(".carousel-control-next, .carousel-control-prev").hide();
+                        });
+                    </script>
                     {% endif %}
-                    <p>{{note[0]['summary']}}</p>
                 </div>
                 {% if note[1] %}
                 <div class="carousel-item">
-                    {% if note [1]['image'] %}
-                    <img src="{{note[1]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    {% if note [1]['image'] and not note[1]['summary'] == "" %}
+                    <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>{{note[1]['summary']}}</p>
+                    </div>
+                    {% elif note[0]['image']%}
+                    <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
                     {% else %}
-                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100 h-100" alt="Thankfulpost1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>{{note[1]['summary']}}</p>
+                    </div>
                     {% endif %}
-                    <p>{{note[1]['summary']}}</p>
                 </div>
                 {% endif %}
                 {% if note[2] %}
                 <div class="carousel-item">
                     {% if note [2]['image'] %}
-                    <img src="{{note[2]['image']}}" class="d-block w-100" alt="Thankfulpost1">
+                    <img src="{{note[2]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>{{note[2]['summary']}}</p>
+                    </div>
+                    {% elif note[2]['image']%}
+                    <img src="{{note[2]['image']}}" class="d-block home-image" alt="Thankfulpost1">
                     {% else %}
-                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
+                    <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100 h-100" alt="Thankfulpost1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>{{note[2]['summary']}}</p>
+                    </div>
                     {% endif %}
-                    <p>{{note[2]['summary']}}</p>
                 </div>
                 {% endif %}
                 </div>
@@ -66,8 +88,8 @@
                 </button>
             </div>
             {% else %}  
-            <div class="accordion" id="accordionExample">
-                <form action="/" method="POST" id="postform" enctype="multipart/form-data">
+            <div class="accordion show" id="accordionExample">
+                <form action="/send" method="POST" id="postform" enctype="multipart/form-data">
                     <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -106,7 +128,9 @@
                             <input type="file" id="file3" name="file3"/>
                         </div>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary primarybutton" id="uploadbutton" type="submit" value="Upload">Upload</button>
+                    <button id="postbutton" class="w-100 btn btn-lg btn-primary" type="submit" value="Upload">Upload</button>
+                </form>
+                </div> 
                 </form>
             </div>  
             </div> 
