@@ -153,3 +153,15 @@ body {
     width: 50%;
   }
 }
+
+@media screen and (max-width: 580px) {
+  .changeprofile {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .changeprofile {
+    width: 80%;
+  }
+}
