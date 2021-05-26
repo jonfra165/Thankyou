@@ -12,6 +12,23 @@
 
 
     <body>
+        <!--
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                    {% if category == 'error' %}
+                        {{message}}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}-->
+
         {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="Third navbar example">
             <div class="container">
