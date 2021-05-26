@@ -120,7 +120,7 @@ body {
 /*PROFILE*/
 
 .changeprofile {
-  width: 30%;
+  width: 100%;
   margin: auto;
 }
 
@@ -152,29 +152,6 @@ body {
   color: #ff5cad;
 }
 
-@media screen and (max-width: 1200px) {
-  .changeprofile {
-    width: 35%;
-  }
-}
-
-@media screen and (max-width: 1030px) {
-  .changeprofile {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  .changeprofile {
-    width: 60%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .changeprofile {
-    width: 80%;
-  }
-}
 
 /*HOME*/
 
