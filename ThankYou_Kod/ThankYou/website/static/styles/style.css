@@ -11,6 +11,8 @@ body {
 .navbar {
     background-color: #ffffff !important;
     box-shadow: 0 1px 60px 2px rgba(0,0,0,0.25);
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 #navlogo {
@@ -99,7 +101,7 @@ body {
 
 /* Add a green text color when the requirements are right */
 .valid {
-  color: green;
+  color: rgb(93, 167, 93);
 }
 
 .valid:before {
@@ -109,7 +111,7 @@ body {
 
 /* Add a red text color when the requirements are wrong */
 .invalid {
-  color: red;
+  color: rgb(235, 121, 121);
 }
 
 .invalid:before {
