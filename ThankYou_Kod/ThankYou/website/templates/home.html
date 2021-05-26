@@ -4,6 +4,7 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="logincon">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-lg-7 text-center text-lg-start">
@@ -35,6 +36,11 @@
                     <div class="carousel-caption d-none d-md-block">
                         <p>{{note[0]['summary']}}</p>
                     </div>
+                    <script>
+                        $(document).ready(function(){
+                            $(".carousel-control-next, .carousel-control-prev").hide();
+                        });
+                    </script>
                     {% endif %}
                 </div>
                 {% if note[1] %}
