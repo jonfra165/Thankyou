@@ -181,17 +181,22 @@
               ` );
               }
               if (index === 0)
-                $(".carousel-item").addClass('active')
+                  $(".carousel-item").addClass('active')
+              });
             });
-          });
 
-        }
+          }
+        });
+
+        setTimeout(function() {
+          $(".today").click();
+          $("#carouselExampleControls").fadeIn(1000);
+        }, 500);
+
+      }).fail(function(error) {
+        console.log(error);
       });
-    }).fail(function(error) {
-      console.log(error);
     });
-  });
-  
 </script>
 
 {% endblock %}
