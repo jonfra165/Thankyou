@@ -5,14 +5,15 @@
 {% block content %}
 
 
-<div class="container col-xxl-8 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    
-    <div class="col-10 col-sm-8 col-lg-6">
-      <h1 class="display-4 fw-bold lh-1 mb-3">You're only a few clicks away from happiness!</h1>
-      <p class="col-lg-10 fs-4">We have a strong belief that expressing your gratitude will make you happier. Therefore we created ThankYou - your own digital gratitude journal. So, what are you waiting for?</p> 
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
+      <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     </div>
-    <div class="col-lg-6">
+
+    
+    <div class="col-md-10 mx-auto col-lg-5">
       <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" method="POST">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
