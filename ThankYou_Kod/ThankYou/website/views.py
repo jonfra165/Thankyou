@@ -25,7 +25,7 @@ app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
-@views.route('/', methods=['GET', 'POST'])
+@views.route('/', methods=['GET'])
 @login_required #User can only see the home page if they are logged in
 def home():
     '''This view returns the home page'''
@@ -42,7 +42,20 @@ def home():
     today = date.today()
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
+    note_list = []
+    for notes in note:
+        x = {
+            "summary": notes.data if notes.data != None else "",
+            "image": notes.image
+        }
+        note_list.append(x)
 
+    return render_template('home.html', user=current_user, note=note_list, quote=quote, author=author)
+
+@views.route('/send', methods=['POST'])
+@login_required #User can only see the home page if they are logged in
+def send_form():
+    
     if request.method == 'POST':
         note1 = request.form.get('note1')
         note2 = request.form.get('note2')
@@ -98,8 +111,8 @@ def home():
         if new_note2 != '' : db.session.add(new_note2)
         if new_note3 != '' : db.session.add(new_note3)
         db.session.commit()
-    
-    return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
+
+        return redirect("/")
 
 @views.route("/edit-note")
 @login_required
