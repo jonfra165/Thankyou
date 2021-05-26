@@ -9,6 +9,8 @@ import json
 import os
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
+from validate_email import validate_email
+
 views = Blueprint('views', __name__)
 
 UPLOAD_FOLDER = 'ThankYou_Kod/ThankYou/website/static/uploads'
@@ -80,7 +82,7 @@ def send_form():
             elif note1 != '' :
                 new_note1 = Note(data=note1, user_id=current_user.id)
         else:
-            return render_template('home.html', user=current_user, note=note, quote=quote, author=author)
+            return render_template('home.html', user=current_user)
 
         new_note2 = ''
         if note2 != '' or file2.filename != '' :
@@ -193,34 +195,50 @@ def profile():
     user = current_user
     return render_template("profile.html", user=user)
 
-
-@views.route('/edit', methods=['GET', 'POST'])
-@login_required
-def edit():
-    user = current_user.id
-    profile = User.query.filter_by(id=user).all()
-
-    for p in profile: 
-        email=p.email
-        password=p.password
-        name=p.first_name
-    
-    return render_template('edit.html', title='edit', email=email, password=password, name=name, user=current_user)
-
 @views.route('/save_edit', methods=['GET', 'POST'])
 @login_required
 def save_edit():
     cemail = request.form.get('cemail')
     fname = request.form.get('fname')
     cpassword = request.form.get('cpassword')
+
+    validate = validate_email(cemail)
+
     user = current_user.id
     profile = User.query.filter_by(id=user).first()
     
-    profile.email = cemail
-    profile.first_name = fname
-    profile.password = cpassword
-    profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
-    db.session.commit()
-
-    flash('Profile updated!', category='success')
+    try: 
+        if len(cemail) < 4:
+            flash('Email must be greater than 4 characters.', category='error')
+        elif validate == False: 
+            flash('This email does not exist', category='error')
+        elif len(fname) < 2:
+            flash('First name must be greater than 2 characters.', category='error')
+        else:
+            if cpassword == '':
+                profile.email = cemail
+                profile.first_name = fname
+                profile.password = profile.password
+                db.session.commit()
+                flash('Profile updated!', category='success')
+            elif cpassword != '':
+                if len(cpassword) < 8:
+                    flash('Password must be greater than 8 characters.', category='error')
+                elif not any(p.isupper() for p in cpassword): # Check if password includes at least one capital letter 
+                    flash('Password must include at least one capital letter.', category='error')
+                elif not any(p.isdigit() for p in cpassword): # Check if password includes at least one number 
+                    flash('Password must include at least one number.', category='error')
+                elif not any(char.isupper() for char in cpassword):
+                    flash('Password should have at least one uppercase letter', category='error')
+                elif not any(char.isdigit() for char in cpassword):
+                    flash('Password should have at least one numeral', category='error')
+                else:
+                    profile.email = cemail
+                    profile.first_name = fname
+                    profile.password = generate_password_hash(cpassword, method='sha256')#Hash password
+                    db.session.commit()
+                    flash('Profile updated!', category='success')
+    except:
+        flash('This account already exists in Thank You', category='error')
+    
     return redirect(url_for('views.profile'))
