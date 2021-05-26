@@ -164,3 +164,11 @@ body {
     width: 80%;
   }
 }
+
+/*HOME*/
+
+.home-image {
+  object-fit:cover;
+  width: 500px;
+  height: 300px;
+}
