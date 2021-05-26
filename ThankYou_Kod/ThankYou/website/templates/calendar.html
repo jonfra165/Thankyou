@@ -47,6 +47,7 @@
   
   // Väntar tills sidan har laddats klart (tills hela DOM-trädet är konstruerat)
   $(document).ready(function () {
+    $(".carousel-control-next, .carousel-control-prev").hide();
 
     // Skickar ett ajax-anrop till adressen "/calendar-events" (där alla poster för inloggad användare returneras i JSON)
     $.ajax({
@@ -76,7 +77,12 @@
               // index => platsen i listan som vi är på (i vår forEach-loop)
               console.log(post)
               // Letar upp elementet med id:t "posts" och lägger till en sträng med element
-
+              
+              if (post.image || post.summary) {
+                  $(".carousel-control-next, .carousel-control-prev").show();
+              } else {
+                  $(".carousel-control-next, .carousel-control-prev").hide();
+              }
           
               if (post.image && post.summary) {
                 $(".carousel-inner").append(`
@@ -185,6 +191,7 @@
       console.log(error);
     });
   });
+  
 </script>
 
 {% endblock %}

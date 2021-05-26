@@ -118,14 +118,6 @@ def send_form():
 @login_required
 def edit_note():
     '''Add comment'''
-    
-
-@views.route("/profile")
-@login_required #User can only see the profile page if they are logged in
-def profile():
-    ''' This view returns the profile page '''
-    user = current_user
-    return render_template("profile.html", user=user)
 
 @views.route("/calendar")
 @login_required
@@ -194,6 +186,14 @@ def delete(id):
 
     return redirect(url_for("views.calendar"))
 
+@views.route("/profile")
+@login_required #User can only see the profile page if they are logged in
+def profile():
+    ''' This view returns the profile page '''
+    user = current_user
+    return render_template("profile.html", user=user)
+
+
 @views.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
@@ -222,8 +222,5 @@ def save_edit():
     profile.password=generate_password_hash(cpassword, method='sha256')#Hash password
     db.session.commit()
 
-
-        
-        
     flash('Profile updated!', category='success')
     return redirect(url_for('views.profile'))
