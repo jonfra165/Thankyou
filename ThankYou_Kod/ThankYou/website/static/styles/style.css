@@ -116,3 +116,40 @@ body {
   position: relative;
   left: -35px;
 }
+
+/*PROFILE*/
+
+.changeprofile {
+  width: 30%;
+  margin: auto;
+}
+
+.profile-button {
+  background-color: #fc8cc4;
+  border: #ced4da;
+}
+
+.profile-button:hover {
+  background-color: #ff5cad;
+  border: #ced4da;
+}
+
+.profile-heart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  padding-bottom: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+  .changeprofile {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .changeprofile {
+    width: 50%;
+  }
+}
