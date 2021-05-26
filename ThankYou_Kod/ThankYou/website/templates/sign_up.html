@@ -9,6 +9,18 @@
     <div class="col-md-10 mx-auto col-lg-5">
 
       <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" method="POST">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{message}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="form-floating mb-3">
           <input type="email" name="email" class="form-control" id="inputEmail" placeholder="name@example.com">
           <label for="inputEmail">Email address</label>
