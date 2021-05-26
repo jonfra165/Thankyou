@@ -19,13 +19,13 @@ def login():
 
         if user: #If email has a row
             if check_password_hash(user.password, password): #If email has a row and correct password
-                flash('Logged in succesfully!', category='success')
+                flash('Logged in succesfully!', category='login-success')
                 login_user(user, remember=True) #Remembers that user is logged in
                 return redirect(url_for('views.home')) #Redirect to home page
             else: #Incorrect password
-                flash('Incorrect password, try again', category='error')
+                flash('Incorrect password, try again', category='login-error')
         else: #If email doesn't have a row in the table then it does not exist
-            flash('Email doesn\’t  exist!', category='error')
+            flash('Email doesn’t  exist!', category='login-error')
 
     return render_template('login.html', user=current_user)  
             

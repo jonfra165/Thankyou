@@ -209,34 +209,34 @@ def save_edit():
     
     try: 
         if len(cemail) < 4:
-            flash('Email must be greater than 4 characters.', category='error')
+            flash('Email must be greater than 4 characters.', category='profile-error')
         elif validate == False: 
-            flash('This email does not exist', category='error')
+            flash('This email does not exist', category='profile-error')
         elif len(fname) < 2:
-            flash('First name must be greater than 2 characters.', category='error')
+            flash('First name must be greater than 2 characters.', category='profile-error')
         elif cpassword == '':
             profile.email = cemail
             profile.first_name = fname
             profile.password = profile.password
             db.session.commit()
-            flash('Profile updated!', category='success')
+            flash('Profile updated!', category='profile-success')
         elif cpassword != '':
             if len(cpassword) < 8:
-                flash('Password must be greater than 8 characters.', category='error')
+                flash('Password must be greater than 8 characters.', category='profile-error')
             elif not any(p.isupper() for p in cpassword): # Check if password includes at least one capital letter 
-                flash('Password must include at least one capital letter.', category='error')
+                flash('Password must include at least one capital letter.', category='profile-error')
             elif not any(p.isdigit() for p in cpassword): # Check if password includes at least one number 
-                flash('Password must include at least one number.', category='error')
+                flash('Password must include at least one number.', category='profile-error')
             elif not any(char.islower() for char in cpassword):
-                flash('Password should have at least one lowercase letter', category='error')
+                flash('Password should have at least one lowercase letter', category='profile-error')
             elif not any(char.isdigit() for char in cpassword):
-                flash('Password should have at least one numeral', category='error')
+                flash('Password should have at least one numeral', category='profile-error')
             else:
                 profile.email = cemail
                 profile.first_name = fname
                 profile.password = generate_password_hash(cpassword, method='sha256')#Hash password
                 db.session.commit()
-                flash('Profile updated!', category='success')
+                flash('Profile updated!', category='profile-success')
     except:
         flash('This account already exists in Thank You', category='error')
     
