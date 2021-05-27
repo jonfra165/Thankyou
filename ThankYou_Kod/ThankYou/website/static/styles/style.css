@@ -162,7 +162,7 @@ body {
 }
 
 .home-button {
-  margin-top: 5px;
+  margin-top: 15px;
   background-color: #fc8cc4;
   border: #ced4da;
 }
@@ -193,4 +193,8 @@ body {
   background-color: #ff5cad;
   border: #ced4da;
   color: #fff;
+}
+
+.py-5 {
+  padding-top: 1rem!important;
 }
