@@ -18,19 +18,19 @@
         </figure>  
       </div>
     <div class="row align-items-center g-lg-5 py-5">
-      <div class="col-md-10 mx-auto col-lg-5">
-        <div class="p-4 p-md-5 border rounded-3 bg-light">
+      <div class="col-md-10 mx-auto">
+        <div class="border rounded-3 bg-light">
             {% if note [0]%}
             <div id="carouselExampleIndicators" class="carousel slide hide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         {% if note [0]['image'] and not note[0]['summary'] == "" %}
-                        <img src="{{note[0]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                        <img src="{{note[0]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                         <div class="carousel-caption">
                             <p>{{note[0]['summary']}}</p>
                         </div>
                         {% elif note[0]['image']%}
-                        <img src="{{note[0]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                        <img src="{{note[0]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                         {% else %}
                         <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100" alt="Thankfulpost1">
                         <div class="carousel-caption d-none d-md-block">
@@ -46,12 +46,12 @@
                 {% if note[1] %}
                 <div class="carousel-item">
                     {% if note [1]['image'] and not note[1]['summary'] == "" %}
-                    <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                    <img src="{{note[1]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                     <div class="carousel-caption d-none d-md-block">
                         <p>{{note[1]['summary']}}</p>
                     </div>
                     {% elif note[0]['image']%}
-                    <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                    <img src="{{note[1]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                     {% else %}
                     <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100 h-100" alt="Thankfulpost1">
                     <div class="carousel-caption d-none d-md-block">
@@ -69,12 +69,12 @@
             {% if note[1] %}
             <div class="carousel-item">
                 {% if note [1]['image'] and not note[1]['summary'] == "" %}
-                <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                <img src="{{note[1]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                 <div class="carousel-caption d-none d-md-block">
                     <p>{{note[1]['summary']}}</p>
                 </div>
                 {% elif note[0]['image']%}
-                <img src="{{note[1]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                <img src="{{note[1]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                 {% else %}
                 <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100 h-100" alt="Thankfulpost1">
                 <div class="carousel-caption d-none d-md-block">
@@ -86,12 +86,12 @@
             {% if note[2] %}
             <div class="carousel-item">
                 {% if note [2]['image'] %}
-                <img src="{{note[2]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                <img src="{{note[2]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                 <div class="carousel-caption d-none d-md-block">
                     <p>{{note[2]['summary']}}</p>
                 </div>
                 {% elif note[2]['image']%}
-                <img src="{{note[2]['image']}}" class="d-block home-image" alt="Thankfulpost1">
+                <img src="{{note[2]['image']}}" class="d-block home-image w=100 h=100" alt="Thankfulpost1">
                 {% else %}
                 <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" class="d-block w-100 h-100" alt="Thankfulpost1">
                 <div class="carousel-caption d-none d-md-block">
