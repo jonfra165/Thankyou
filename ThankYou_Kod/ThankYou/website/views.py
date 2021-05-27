@@ -31,6 +31,7 @@ def uploaded_file(filename):
 @login_required #User can only see the home page if they are logged in
 def home():
     '''This view returns the home page'''
+    '''
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
     quote_list = quote_str.split('(')
@@ -40,7 +41,7 @@ def home():
         author = 'Anonymous'
     else:
         author = quote_list[1].replace(')', '')
-
+    '''
     today = date.today()
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
@@ -52,7 +53,7 @@ def home():
         }
         note_list.append(x)
 
-    return render_template('home.html', user=current_user, note=note_list, quote=quote, author=author)
+    return render_template('home.html', user=current_user, note=note_list, quote="Star Wars is da shit", author="Anton")
 
 @views.route('/send', methods=['POST'])
 @login_required #User can only see the home page if they are logged in
@@ -207,37 +208,40 @@ def save_edit():
     user = current_user.id
     profile = User.query.filter_by(id=user).first()
     
-    try: 
+    try:
         if len(cemail) < 4:
-            flash('Email must be greater than 4 characters.', category='error')
+            flash('Email must be greater than 4 characters.', category='profile-error')
         elif validate == False: 
-            flash('This email does not exist', category='error')
+            flash('This email does not exist', category='profile-error')
         elif len(fname) < 2:
-            flash('First name must be greater than 2 characters.', category='error')
+            flash('First name must be greater than 2 characters.', category='profile-error')
         elif cpassword == '':
             profile.email = cemail
             profile.first_name = fname
             profile.password = profile.password
             db.session.commit()
-            flash('Profile updated!', category='success')
+            flash('Profile updated!', category='profile-success')
         elif cpassword != '':
             if len(cpassword) < 8:
-                flash('Password must be greater than 8 characters.', category='error')
+                flash('Password must be greater than 8 characters.', category='profile-error')
             elif not any(p.isupper() for p in cpassword): # Check if password includes at least one capital letter 
-                flash('Password must include at least one capital letter.', category='error')
+                flash('Password must include at least one capital letter.', category='profile-error')
             elif not any(p.isdigit() for p in cpassword): # Check if password includes at least one number 
-                flash('Password must include at least one number.', category='error')
+                flash('Password must include at least one number.', category='profile-error')
             elif not any(char.islower() for char in cpassword):
-                flash('Password should have at least one lowercase letter', category='error')
+                flash('Password should have at least one lowercase letter', category='profile-error')
             elif not any(char.isdigit() for char in cpassword):
-                flash('Password should have at least one numeral', category='error')
+                flash('Password should have at least one numeral', category='profile-error')
             else:
                 profile.email = cemail
                 profile.first_name = fname
                 profile.password = generate_password_hash(cpassword, method='sha256')#Hash password
                 db.session.commit()
-                flash('Profile updated!', category='success')
+                flash('Profile updated!', category='profile-success')
     except:
-        flash('This account already exists in Thank You', category='error')
-    
+        flash('This account already exists in Thank You!', category='error')
+
+
     return redirect(url_for('views.profile'))
+
+

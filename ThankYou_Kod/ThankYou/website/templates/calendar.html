@@ -88,10 +88,10 @@
                 $(".carousel-inner").append(`
                   <div class="carousel-item">
                     <img src="${post.image}" alt="Tillhörande bild till inlägget" width="600em" height="600em">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption carousel-button">
                       <h5>${post.summary}</h5>
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
+                      <button type="button" class="btn btn-warning calendar-button" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
                         Delete
                       </button>
 
@@ -100,14 +100,14 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-titel text-dark" id="exampleModalLabel_${post.id}">Delete Post!</h5>
+                              <h5 class="modal-titel text-dark display-6" id="exampleModalLabel_${post.id}">Delete Post!</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-dark text-start">
                               Are you sure you want delete this post?
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-secondary calendar-button" data-bs-dismiss="modal">Close</button>
                               <a class="btn btn-warning" href="/delete/${post.id}" role="button">Delete</a>
                             </div>
                           </div>
@@ -120,9 +120,9 @@
                 $(".carousel-inner").append(`
                   <div class="carousel-item">
                     <img src="${post.image}" alt="Tillhörande bild till inlägget" width="600em" height="600em">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption carousel-button">
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
+                      <button type="button" class="btn btn-warning calendar-button" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
                         Delete
                       </button>
 
@@ -131,7 +131,7 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-titel text-dark" id="exampleModalLabel_${post.id}">Delete Post!</h5>
+                              <h5 class="modal-titel text-dark display-6" id="exampleModalLabel_${post.id}">Delete Post!</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-dark text-start">
@@ -139,7 +139,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <a class="btn btn-warning" href="/delete/${post.id}" role="button">Delete</a>
+                              <a class="btn btn-warning calendar-button" href="/delete/${post.id}" role="button">Delete</a>
                             </div>
                           </div>
                         </div>
@@ -151,10 +151,10 @@
                 $(".carousel-inner").append(`
                   <div class="carousel-item">
                     <img src="https://www.yogafordig.nu/wp-content/uploads/2019/10/Mindfulness-4-583x437.jpeg" alt="Tillhörande bild till inlägget" width="600em" height="600em">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption carousel-button">
                       <h5>${post.summary}</h5>
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
+                      <button type="button" class="btn btn-warning calendar-button" data-bs-toggle="modal" data-bs-target="#exampleModal_${post.id}">
                         Delete
                       </button>
 
@@ -163,14 +163,14 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-titel text-dark" id="exampleModalLabel_${post.id}">Delete Post!</h5>
+                              <h5 class="modal-titel text-dark display-6" id="exampleModalLabel_${post.id}">Delete Post!</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-dark text-start">
                               Are you sure you want delete this post?
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-secondary calendar-button btn-sm" data-bs-dismiss="modal">Close</button>
                               <a class="btn btn-warning" href="/delete/${post.id}" role="button">Delete</a>
                             </div>
                           </div>

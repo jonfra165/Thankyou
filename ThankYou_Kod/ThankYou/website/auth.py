@@ -19,13 +19,13 @@ def login():
 
         if user: #If email has a row
             if check_password_hash(user.password, password): #If email has a row and correct password
-                flash('Logged in succesfully!', category='success')
+                flash('Logged in succesfully!', category='login-success')
                 login_user(user, remember=True) #Remembers that user is logged in
                 return redirect(url_for('views.home')) #Redirect to home page
             else: #Incorrect password
-                flash('Incorrect password, try again', category='error')
+                flash('Incorrect password, try again', category='login-error')
         else: #If email doesn't have a row in the table then it does not exist
-            flash('Email doesn\’t  exist!', category='error')
+            flash('Email doesn’t  exist!', category='login-error')
 
     return render_template('login.html', user=current_user)  
             
@@ -49,31 +49,31 @@ def sign_up():
     
         user = User.query.filter_by(email=email).first()
         if user: 
-            flash('Email already exists!', category='error')
+            flash('Email already exists!', category='signup-error')
         elif len(email) < 4:
-            flash('Email must be greater than 4 characters.', category='error')
+            flash('Email must be greater than 4 characters.', category='signup-error')
         elif validate == False: 
-            flash('This email does not exist', category='error')
+            flash('This email does not exist', category='signup-error')
         elif len(fname) < 2:
-            flash('First name must be greater than 2 characters.', category='error')
+            flash('First name must be greater than 2 characters.', category='signup-error')
         elif len(password1) < 8:
-            flash('Password must be greater than 8 characters.', category='error')
+            flash('Password must be greater than 8 characters.', category='signup-error')
         elif not any(p.isupper() for p in password1): # Check if password includes at least one capital letter 
-            flash('Password must include at least one capital letter.', category='error')
+            flash('Password must include at least one capital letter.', category='signup-error')
         elif not any(p.isdigit() for p in password1): # Check if password includes at least one number 
-            flash('Password must include at least one number.', category='error')
+            flash('Password must include at least one number.', category='signup-error')
         elif password1 != password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords don\'t match', category='signup-error')
         elif not any(char.islower() for char in password1):
-            flash('Password should have at least one lowercase letter', category='error')
+            flash('Password should have at least one lowercase letter', category='signup-error')
         elif not any(char.isdigit() for char in password1):
-            flash('Password should have at least one numeral', category='error')
+            flash('Password should have at least one numeral', category='signup-error')
         else: #Insert new user to database
             new_user = User(email=email, first_name=fname, password=generate_password_hash(password1, method='sha256')) #Hash password
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True) #Remembers that user is logged in
-            flash('Account created', category='sucess')
+            flash('Account created', category='success')
 
             return redirect(url_for('views.home')) #Redirect to login page
             
