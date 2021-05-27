@@ -99,7 +99,7 @@ body {
 
 /* Add a green text color when the requirements are right */
 .valid {
-  color: green;
+  color: rgb(93, 167, 93);
 }
 
 .valid:before {
@@ -109,7 +109,7 @@ body {
 
 /* Add a red text color when the requirements are wrong */
 .invalid {
-  color: red;
+  color: rgb(235, 121, 121);
 }
 
 .invalid:before {

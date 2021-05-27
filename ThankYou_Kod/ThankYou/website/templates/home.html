@@ -6,19 +6,19 @@
 {% block content %}
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="logincon">
+    <div class="col-lg-7 text-center text-lg-start">
+        <figure class="text-end">
+            <h2>Your daily quote</h2>
+            <blockquote class="blockquote">
+                <p>"{{quote}}"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite title="Source Title">{{author}}</cite>
+            </figcaption>
+        </figure>  
+      </div>
     <div class="row align-items-center g-lg-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-            <figure class="text-end">
-                <h2>Your daily quote</h2>
-                <blockquote class="blockquote">
-                    <p>{{quote}}</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    <cite title="Source Title">{{author}}</cite>
-                </figcaption>
-            </figure>  
-        </div>
-        <div class="col-md-10 mx-auto col-lg-5">
+      <div class="col-md-10 mx-auto col-lg-5">
         <div class="p-4 p-md-5 border rounded-3 bg-light">
             {% if note [0]%}
             <div id="carouselExampleIndicators" class="carousel slide hide" data-bs-ride="carousel">
