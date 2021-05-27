@@ -31,6 +31,7 @@ def uploaded_file(filename):
 @login_required #User can only see the home page if they are logged in
 def home():
     '''This view returns the home page'''
+    '''
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
     quote_list = quote_str.split('(')
@@ -40,7 +41,7 @@ def home():
         author = 'Anonymous'
     else:
         author = quote_list[1].replace(')', '')
-
+    '''
     today = date.today()
     user = current_user.id 
     note = Note.query.filter_by(user_id=user).filter_by(date=today).all()
@@ -52,7 +53,7 @@ def home():
         }
         note_list.append(x)
 
-    return render_template('home.html', user=current_user, note=note_list, quote=quote, author=author)
+    return render_template('home.html', user=current_user, note=note_list, quote="Star Wars is da shit", author="Anton")
 
 @views.route('/send', methods=['POST'])
 @login_required #User can only see the home page if they are logged in
