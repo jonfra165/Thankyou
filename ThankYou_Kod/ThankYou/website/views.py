@@ -7,6 +7,7 @@ import requests
 import re
 import json
 import os
+
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash #Hash for password
 from validate_email import validate_email
@@ -27,11 +28,10 @@ app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
-@views.route('/', methods=['GET'])
-@login_required #User can only see the home page if they are logged in
-def home():
-    '''This view returns the home page'''
-    
+
+def get_quote():
+    '''This function gets inspirational quotes from Forismatic API'''
+
     response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en')
     quote_str = response.text
     quote_list = quote_str.split('(')
@@ -41,6 +41,15 @@ def home():
         author = 'Anonymous'
     else:
         author = quote_list[1].replace(')', '')
+
+    return quote, author
+
+@views.route('/', methods=['GET'])
+@login_required #User can only see the home page if they are logged in
+def home():
+    '''This view returns the home page'''
+    
+    quote, author = get_quote()
     
     today = date.today()
     user = current_user.id 
