@@ -253,4 +253,9 @@ def save_edit():
 
     return redirect(url_for('views.profile'))
 
+@views.route("/about")
+def about():
+
+    return render_template(about.html)
+
 
