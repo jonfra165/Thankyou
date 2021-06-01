@@ -44,11 +44,9 @@
           <i>Password must contain</i>
           <i id="letter" class="invalid">a <b>lowercase</b> letter,</i>
           <i id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</i>
-          <i id="number" class="invalid">a <b>number</b>,</i>
-          <i>a minimum of </i>
+          <i id="number" class="invalid">a <b>number</b></i>
+          <i>and a minimum of </i>
           <i id="length" class="invalid"><b>8 characters</b></i>
-          <i>and</i>
-          <i id="special" class="invalid"><b>1 special character</b></i>
         </div>
         
         <div class="form-floating mb-3">
@@ -71,9 +69,7 @@
   var letter = document.getElementById("letter");
   var capital = document.getElementById("capital");
   var number = document.getElementById("number");
-  var length = document.getElementById("length");
-  var special = document.getElementById("special");
-  
+  var length = document.getElementById("length");  
   
   // When the user clicks on the password field, show the message box
   myInput.onfocus = function() {
@@ -124,15 +120,6 @@
     } else {
       length.classList.remove("valid");
       length.classList.add("invalid");
-    }
-
-    var special_characters = /[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
-    if(myInput.value.match(special_characters)) {  
-      special.classList.remove("invalid");
-      special.classList.add("valid");
-    } else {
-      special.classList.remove("valid");
-      special.classList.add("invalid");
     }
 
   }
