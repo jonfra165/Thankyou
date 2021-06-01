@@ -248,7 +248,7 @@ def save_edit():
                 db.session.commit()
                 flash('Profile updated!', category='profile-success')
     except:
-        flash('This account already exists in Thank You!', category='error')
+        flash('This account already exists in Thank You!', category='profile-error')
 
 
     return redirect(url_for('views.profile'))
