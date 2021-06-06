@@ -4,7 +4,7 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<div class="container col-xl-10 col-xxl-8 px-4 pt-5" id="logincon">
+<div class="container col-xl-10 col-xxl-8 px-4 pt-5">
     <div class="d-flex justify-content-center">
         <figure class="col-md-5">
             <h3>A little light to guide your way..</h3>
@@ -16,7 +16,7 @@
             </figcaption>
         </figure>  
       </div>
-      <div class="container col-xl-10 col-xxl-8 px-4 pt-5" id="logincon">
+      <div class="container col-xl-10 col-xxl-8 px-4 pt-5">
         <div class="d-flex justify-content-center">
         {% if note [0]%}
             <div id="carouselExampleIndicators" class="carousel slide hide" data-bs-ride="carousel">
@@ -93,7 +93,7 @@
                         
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <textarea name="note1" id="note1" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea></br>
+                                    <textarea name="note1" id="note1" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea>
                                     <input class="form-control" type="file" id="file1" name="file1">
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <textarea name="note2" id="note2" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea></br>
+                                    <textarea name="note2" id="note2" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea>
                                     <input class="form-control" type="file" id="file2" name="file2">
                                 </div>
                             </div>
@@ -123,12 +123,12 @@
 
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <textarea name="note3" id="note3" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea></br>
+                                <textarea name="note3" id="note3" placeholder="I am thankful for..." cols="20" rows="5" class="form-control"></textarea>
                                 <input class="form-control" type="file" id="file3" name="file3">
                             </div>
                         </div>
-                        </form>
                     </div>
+                    </form>
                     <div class="text-center">
                         <button id="postbutton" form="postform" class="w-50 btn btn-lg btn-primary home-button" type="submit" value="Upload">Upload</button>
                     </div>  
@@ -137,8 +137,6 @@
         </div>
     </div>
     {% endif %}
-      </div>
-    </div>
   </div>
 
 {% endblock %}
