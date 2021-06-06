@@ -1,7 +1,7 @@
 function formatDate(date) {
     /*
-      Funktion som tar ett datum (JS-objekt) och 
-      returnar datum i formatet yyyy-mm-dd
+      Function that takes a date (JS-objekt) and
+      returns it in the format yyyy-mm-dd
     */
     var d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -16,38 +16,36 @@ function formatDate(date) {
     return [year, month, day].join('-');
   }
   
-  // Väntar tills sidan har laddats klart (tills hela DOM-trädet är konstruerat)
+  // Waiting for the page to load
   $(document).ready(function () {
     $(".carousel-control-next, .carousel-control-prev").hide();
 
-    // Skickar ett ajax-anrop till adressen "/calendar-events" (där alla poster för inloggad användare returneras i JSON)
+    // Sends a ajax-call to the address "/calendar-events"
     $.ajax({
       url: "/calendar-events"
     }).done(function (data) {
-      // Allt fungerar bra, vi fick ett svar från URL som sparas i parametern "data"
+      // The answe from the URL is saved in "data"
 
-      // Läser in listan med poster och gör om det till datastrukturer (lista med objekt)
+      // Reads the list of records and converts it into data structures
       const posts = JSON.parse(data);
 
-      // Bygger vår kalender (simple-calendar)
+      // Builds our calendar (simple-calendar)
       $("#container").simpleCalendar({
-        events: posts, // Alla poster som ska visas i kalendern (det blir en "prick" för varje datum en post finns)
+        events: posts, // All entries to be displayed in the calendar will be shown as a "dot" for each date an entry exists
         onDateSelect: function (date, events) {
-          // När vi klickat på ett datum i kalendern, hämta alla inlägg det valda datumet
+          // Once we click on a date in the calendar, all posts will retrieve on the selected date
           $.ajax({
             url: "/calendar-events-by-date/"+formatDate(date)
           }).done(function(data) {
             const posts = JSON.parse(data);
             
-            // Tar bort alla barn (tömmer div-elementet) på ev. poster
+            // Empties the div element on any poster
             $(".carousel-inner").empty();
 
-            // forEach (alltså för varje objekt (post) i listan) skriv ut posten på sidan
+            // For each object, post, in the list - print post 
             posts.forEach(function(post, index) {
-              // post => Själva posten
-              // index => platsen i listan som vi är på (i vår forEach-loop)
               console.log(post)
-              // Letar upp elementet med id:t "posts" och lägger till en sträng med element
+              // Finds the element with id "posts" and adds a string with elements
               
               if (post.image || post.summary) {
                   $(".carousel-control-next, .carousel-control-prev").show();
@@ -168,3 +166,64 @@ function formatDate(date) {
         console.log(error);
       });
     });
+
+// Checks if password is valid 
+
+    var myInput = document.getElementById("inputPassword");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");  
+    
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    }
+    
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+      document.getElementById("message").style.display = "none";
+    }
+    
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput.value.match(lowerCaseLetters)) {  
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+      
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput.value.match(upperCaseLetters)) {  
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+    
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput.value.match(numbers)) {  
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+  
+      // Validate length
+      if(myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+  
+    }

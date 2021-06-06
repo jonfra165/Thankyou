@@ -4,15 +4,12 @@
 
 {% block content %}
 
-
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
   <div class="row align-items-center g-lg-5 py-5">
     <div class="col-lg-7 text-center text-lg-start">
       <h1 class="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
       <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     </div>
-
-    
     <div class="col-md-10 mx-auto col-lg-5">
       <form class="p-4 p-md-5 border rounded-3 bg-light" id="log-in" method="POST">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -36,10 +33,9 @@
           <label for="inputFname">Username</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" name="password1" class="form-control" id="inputPassword" placeholder="Password">
+          <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Password">
           <label for="inputPassword">Password</label>
         </div>
-
         <div id="message">
           <i>Password must contain</i>
           <i id="letter" class="invalid">a <b>lowercase</b> letter,</i>
@@ -50,7 +46,7 @@
         </div>
         
         <div class="form-floating mb-3">
-          <input type="password" name="password2" class="form-control" id="inputPassword" placeholder="Confirm Password">
+          <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Confirm Password">
           <label for="inputPassword">Confirm password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary primarybutton" type="submit">Sign up here!</button>
@@ -62,67 +58,5 @@
     </div>
   </div>
 </div>
-
-<!--SHOW REQUIREMENTS-->
-<script>
-  var myInput = document.getElementById("inputPassword");
-  var letter = document.getElementById("letter");
-  var capital = document.getElementById("capital");
-  var number = document.getElementById("number");
-  var length = document.getElementById("length");  
-  
-  // When the user clicks on the password field, show the message box
-  myInput.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-  }
-  
-  // When the user clicks outside of the password field, hide the message box
-  myInput.onblur = function() {
-    document.getElementById("message").style.display = "none";
-  }
-  
-  // When the user starts to type something inside the password field
-  myInput.onkeyup = function() {
-    // Validate lowercase letters
-    var lowerCaseLetters = /[a-z]/g;
-    if(myInput.value.match(lowerCaseLetters)) {  
-      letter.classList.remove("invalid");
-      letter.classList.add("valid");
-    } else {
-      letter.classList.remove("valid");
-      letter.classList.add("invalid");
-    }
-    
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if(myInput.value.match(upperCaseLetters)) {  
-      capital.classList.remove("invalid");
-      capital.classList.add("valid");
-    } else {
-      capital.classList.remove("valid");
-      capital.classList.add("invalid");
-    }
-  
-    // Validate numbers
-    var numbers = /[0-9]/g;
-    if(myInput.value.match(numbers)) {  
-      number.classList.remove("invalid");
-      number.classList.add("valid");
-    } else {
-      number.classList.remove("valid");
-      number.classList.add("invalid");
-    }
-
-    // Validate length
-    if(myInput.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
-    }
-
-  }
-  </script>
 
 {% endblock %}
