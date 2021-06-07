@@ -78,7 +78,7 @@ body {
     background-color: blue;
 }
 
-/*Validate password in SIGN-UP*/
+/*Validate password in SIGN-UP and PROFILE*/
 
 #message {
   display: none;
