@@ -31,23 +31,94 @@
               {% endwith %}
         <div class="form-floating mb-3">
           <input type="text" name="fname" class="form-control" id="inputFname" value="{{ user.first_name }}">
-          <label for="fname">Edit username</label>
+          <label for="inputFname">Edit username</label>
         </div>
         <div class="form-floating mb-3">
           <input type="email" name="cemail" class="form-control" id="email" value="{{ user.email }}">
-          <label for="cemail">Edit email adress</label>
+          <label for="email">Edit email adress</label>
         </div>
         <div class="form-floating mb-3">
           <input type="password" name="cpassword" class="form-control" id="inputPassword" placeholder="enter your new password">
-          <label for="cpassword">New password</label>
+          <label for="inputPassword">New password</label>
         </div>
+
+        <div id="message">
+          <i>Password must contain</i>
+          <i id="letter" class="invalid">a <b>lowercase</b> letter,</i>
+          <i id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</i>
+          <i id="number" class="invalid">a <b>number</b></i>
+          <i>and a minimum of </i>
+          <i id="length" class="invalid"><b>8 characters</b></i>
+        </div>
+
         <button class="w-100 btn btn-lg btn-primary profile-button">Save profile settings</button>
       </form>
   </div>
     </div>
-  </div>
+</div>
 
+<!--SHOW REQUIREMENTS-->
+<script>
+  var myInput = document.getElementById("inputPassword");
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");  
   
+  // When the user clicks on the password field, show the message box
+  myInput.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+  }
+  
+  // When the user clicks outside of the password field, hide the message box
+  myInput.onblur = function() {
+    document.getElementById("message").style.display = "none";
+  }
+  
+  // When the user starts to type something inside the password field
+  myInput.onkeyup = function() {
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if(myInput.value.match(lowerCaseLetters)) {  
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+    }
+    
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if(myInput.value.match(upperCaseLetters)) {  
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+  
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if(myInput.value.match(numbers)) {  
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // Validate length
+    if(myInput.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+
+  }
+  </script>
+
 
 
 

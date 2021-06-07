@@ -78,7 +78,7 @@ body {
     background-color: blue;
 }
 
-/*Validate password in SIGN-UP*/
+/*Validate password in SIGN-UP and PROFILE*/
 
 #message {
   display: none;
@@ -159,4 +159,42 @@ body {
   object-fit:cover;
   width: 500px;
   height: 300px;
+}
+
+.home-button {
+  margin-top: 15px;
+  background-color: #fc8cc4;
+  border: #ced4da;
+}
+
+.home-button:hover {
+  background-color: #ff5cad;
+  border: #ced4da;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #212529;
+}
+
+/*CALENDAR*/
+
+.btn-check:focus+.btn-warning, .btn-warning:focus {
+  background-color: #ff5cad;
+  border-color: #ff5cad;
+}
+
+.calendar-button {
+  background-color: #fc8cc4;
+  border: #ced4da;
+  color: #fff;
+}
+
+.calendar-button:hover {
+  background-color: #ff5cad;
+  border: #ced4da;
+  color: #fff;
+}
+
+.py-5 {
+  padding-top: 1rem!important;
 }
